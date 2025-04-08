@@ -250,7 +250,7 @@ void continuous_binary_test()
     int bits_set = 0;
     int chordMax = 3;
 
-    while (totalStates < 2000) // or Infinite loop for continuous testing
+    while (totalStates < 200) // or Infinite loop for continuous testing
     {
         // Generate a random 12-bit number with up to 5 bits set to 1
         random_number = 0;
@@ -289,7 +289,7 @@ int main()
     majorTriadSequenceModulatingUpFifths();
     majorTriadSequenceModulatingDown();
     majorTriadSequenceModulatingDownFifths();
-    //scrollBinaryValues();
+    scrollBinaryValues();
     //scrollKPDEvalues();
     //continuous_binary_test();
 
