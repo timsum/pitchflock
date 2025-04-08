@@ -44,14 +44,14 @@ The net result is that consonance is a function of bit entropy. The fundamental 
    ```
 3. Makefile:
    ```bash
-  make
+   make
    ```
 4. Run test file (covers all possible inputs):
    ```bash
    ./build/test_harmony_state_default;
    ```
 ## Usage
-1.
+1. The program will serve as a kernel for both music analysis and generation. Inputs can be parametric (Key, Pattern, Degree, Voicing, Extension), or Chroma. I will use it for harmony-responsive music visualization.
 
 ## Project Structure
 - **include/**: Contains header files for core functionality, such as harmony analysis, state management, and naming conventions.
