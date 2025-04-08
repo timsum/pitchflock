@@ -42,11 +42,14 @@ The net result is that consonance is a function of bit entropy. The fundamental 
    ```bash
    cd pitchflock
    ```
-3. Install dependencies:
+3. Makefile:
    ```bash
-   npm install
+  make
    ```
-
+4. Run test file (covers all possible inputs):
+   ```bash
+   ./build/test_harmony_state_default;
+   ```
 ## Usage
 1.
 
