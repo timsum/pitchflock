@@ -262,8 +262,6 @@ void continuous_binary_test()
             bits_set++;
         }
 
-       //int random_number = rand() & 0xFFF; // Limit to 12 bits; // Generate a random number
-
         adjust_harmony_state_from_chroma_and_context(&continuous_state, random_number, context);
         context = continuous_state.kpdve;
         if (continuous_state.kpdve_list_length > 0)
@@ -285,13 +283,13 @@ void continuous_binary_test()
 int main()
 {
     // Call the harmony_state_default function
-    majorTriadSequenceModulatingUp();
-    majorTriadSequenceModulatingUpFifths();
-    majorTriadSequenceModulatingDown();
-    majorTriadSequenceModulatingDownFifths();
+    //majorTriadSequenceModulatingUp();
+    //majorTriadSequenceModulatingUpFifths();
+    //majorTriadSequenceModulatingDown();
+    //majorTriadSequenceModulatingDownFifths();
     scrollBinaryValues();
-    //scrollKPDEvalues();
-    //continuous_binary_test();
+    scrollKPDEvalues();
+    continuous_binary_test();
 
     return 0;
 }
