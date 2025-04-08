@@ -1,0 +1,72 @@
+\doxysection{qdkpdve\+\_\+naming.\+h}
+\hypertarget{qdkpdve__naming_8h_source}{}\label{qdkpdve__naming_8h_source}\index{include/qdkpdve\_naming.h@{include/qdkpdve\_naming.h}}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ \textcolor{comment}{//}}
+\DoxyCodeLine{00002\ \textcolor{comment}{//\ \ qdkpdve\_naming.h}}
+\DoxyCodeLine{00003\ \textcolor{comment}{//\ \ pitchflock}}
+\DoxyCodeLine{00004\ \textcolor{comment}{//}}
+\DoxyCodeLine{00005\ \textcolor{comment}{//\ \ Created\ by\ Tim\ Summers\ on\ 6/12/23.}}
+\DoxyCodeLine{00006\ \textcolor{comment}{//}}
+\DoxyCodeLine{00007\ }
+\DoxyCodeLine{00008\ \textcolor{preprocessor}{\#ifndef\ QDKPDVE\_NAMING\_H}}
+\DoxyCodeLine{00009\ \textcolor{preprocessor}{\#define\ QDKPDVE\_NAMING\_H}}
+\DoxyCodeLine{00010\ }
+\DoxyCodeLine{00011\ \textcolor{preprocessor}{\#define\ CANONICSTARTPOINT\ 11}}
+\DoxyCodeLine{00012\ }
+\DoxyCodeLine{00013\ \textcolor{preprocessor}{\#include\ <stdio.h>}}
+\DoxyCodeLine{00014\ \textcolor{preprocessor}{\#include\ <stdlib.h>}}
+\DoxyCodeLine{00015\ \textcolor{preprocessor}{\#include\ <math.h>}}
+\DoxyCodeLine{00016\ \textcolor{preprocessor}{\#include\ <string.h>}}
+\DoxyCodeLine{00017\ \textcolor{preprocessor}{\#include\ "{}qdkpdve.h"{}}}
+\DoxyCodeLine{00018\ }
+\DoxyCodeLine{00019\ \textcolor{keyword}{extern}\ \textcolor{keywordtype}{char}*\ noteStrings[];}
+\DoxyCodeLine{00020\ \textcolor{keyword}{extern}\ \textcolor{keywordtype}{char}*\ basePatternConventionalNames[];}
+\DoxyCodeLine{00021\ \textcolor{keyword}{extern}\ \textcolor{keywordtype}{char}*\ basePatternConventionalNamesShort[];}
+\DoxyCodeLine{00022\ \textcolor{keyword}{extern}\ \textcolor{keywordtype}{char}*\ modeNamesMatrix[];}
+\DoxyCodeLine{00023\ \textcolor{keyword}{extern}\ \textcolor{keywordtype}{char}*\ patternDistortionsMatrix[];}
+\DoxyCodeLine{00024\ \textcolor{keyword}{extern}\ \textcolor{keywordtype}{char}*\ modeNumbersMatrix[];}
+\DoxyCodeLine{00025\ \textcolor{keyword}{extern}\ \textcolor{keywordtype}{char}*\ voicingNamesMatrix[];}
+\DoxyCodeLine{00026\ \textcolor{keyword}{extern}\ \textcolor{keywordtype}{char}*\ extensionNamesMatrix[];}
+\DoxyCodeLine{00027\ }
+\DoxyCodeLine{00028\ \textcolor{keywordtype}{int}\ canonicalLydianStartPtForCircleIndex(\textcolor{keywordtype}{int}\ index);}
+\DoxyCodeLine{00029\ \textcolor{keywordtype}{int}\ canonicalMajorStartPtForCircleIndex(\textcolor{keywordtype}{int}\ index);}
+\DoxyCodeLine{00030\ \textcolor{keywordtype}{int}\ conventionalDegreeDisplacementForKPDVE(\textcolor{keywordtype}{int}\ patnum);}
+\DoxyCodeLine{00031\ }
+\DoxyCodeLine{00032\ \textcolor{keywordtype}{int}\ conventionalDegreeForKPDVE(\textcolor{keywordtype}{int}\ kpdve);}
+\DoxyCodeLine{00033\ \textcolor{keywordtype}{int}\ conventionalTonicForKPDVEpattern(\textcolor{keywordtype}{int}\ kpdve);}
+\DoxyCodeLine{00034\ }
+\DoxyCodeLine{00035\ \textcolor{keywordtype}{int}\ circleIndexForBitLocation(\textcolor{keywordtype}{int}\ aByte);}
+\DoxyCodeLine{00036\ }
+\DoxyCodeLine{00037\ \textcolor{keywordtype}{int}\ stringIndexForFifthsLocationInKey(\textcolor{keywordtype}{int}\ loc,\ \textcolor{keywordtype}{int}\ key);}
+\DoxyCodeLine{00038\ }
+\DoxyCodeLine{00039\ \textcolor{keywordtype}{int}\ nameIndexForKPDVE(\textcolor{keywordtype}{int}\ kpdve);}
+\DoxyCodeLine{00040\ }
+\DoxyCodeLine{00041\ \textcolor{keyword}{const}\ \textcolor{keywordtype}{char}*\ nameStringForKPDVE(\textcolor{keywordtype}{int}\ kpdve);}
+\DoxyCodeLine{00042\ \textcolor{keyword}{const}\ \textcolor{keywordtype}{char}*\ nameStringAtIndex(\textcolor{keywordtype}{int}\ index);}
+\DoxyCodeLine{00043\ \textcolor{keyword}{const}\ \textcolor{keywordtype}{char}*\ lydBaseForKPDVE(\textcolor{keywordtype}{int}\ kpdve);}
+\DoxyCodeLine{00044\ \textcolor{keyword}{const}\ \textcolor{keywordtype}{char}*\ majBaseForKPDVE(\textcolor{keywordtype}{int}\ kpdve);}
+\DoxyCodeLine{00045\ \textcolor{keyword}{const}\ \textcolor{keywordtype}{char}*\ rootStringForKPDVE(\textcolor{keywordtype}{int}\ kpdve);}
+\DoxyCodeLine{00046\ \textcolor{keyword}{const}\ \textcolor{keywordtype}{char}*\ conventionalTonicStringForKPDVE(\textcolor{keywordtype}{int}\ kpdve);}
+\DoxyCodeLine{00047\ \textcolor{keyword}{const}\ \textcolor{keywordtype}{char}*\ conventionalDegreeStringForKPDVE(\textcolor{keywordtype}{int}\ kpdve);}
+\DoxyCodeLine{00048\ }
+\DoxyCodeLine{00049\ \textcolor{comment}{//\ fill\ in\ the\ string\ buffer\ with\ the\ chord\ notes\ for\ a\ given\ KPDVE}}
+\DoxyCodeLine{00050\ \textcolor{keywordtype}{void}\ chordNotesStringForKPDVE(\textcolor{keywordtype}{int}\ kpdve,\ \textcolor{keywordtype}{char}*stringBuf,\ \textcolor{keywordtype}{size\_t}\ bufSize);}
+\DoxyCodeLine{00051\ }
+\DoxyCodeLine{00052\ \textcolor{comment}{//\ these\ will\ give\ a\ mode\ starting\ at\ the\ root\ of\ the\ chord\ (d)}}
+\DoxyCodeLine{00053\ \textcolor{keywordtype}{void}\ modeNotesStringForKPDVE(\textcolor{keywordtype}{int}\ kpdve,\ \textcolor{keywordtype}{char}*stringBuf,\ \textcolor{keywordtype}{size\_t}\ bufSize);\ \textcolor{comment}{//\ in\ the\ order\ of\ the\ voicing}}
+\DoxyCodeLine{00054\ \textcolor{keywordtype}{void}\ modeNotesScaleStringForKPDVE(\textcolor{keywordtype}{int}\ kpdve,\ \textcolor{keywordtype}{char}*\ stringBuf,\ \textcolor{keywordtype}{size\_t}\ bufSize);\ \textcolor{comment}{//\ in\ the\ order\ of\ the\ scale}}
+\DoxyCodeLine{00055\ \textcolor{keywordtype}{void}\ modeNotesFifthsStringForKPDVE(\textcolor{keywordtype}{int}\ kpdve,\ \textcolor{keywordtype}{char}*\ stringBuf,\ \textcolor{keywordtype}{size\_t}\ bufSize);\ \textcolor{comment}{//\ in\ the\ order\ of\ fifths}}
+\DoxyCodeLine{00056\ }
+\DoxyCodeLine{00057\ \textcolor{comment}{//\ Conventional\ names\ for\ consistency\ in\ the\ pattern\ naming.\ }}
+\DoxyCodeLine{00058\ \textcolor{keyword}{const}\ \textcolor{keywordtype}{char}*\ modeNameForKPDVE(\textcolor{keywordtype}{int}\ kpdve);}
+\DoxyCodeLine{00059\ \textcolor{keyword}{const}\ \textcolor{keywordtype}{char}*\ patternDistortionForKPDVE(\textcolor{keywordtype}{int}\ kpdve);}
+\DoxyCodeLine{00060\ \textcolor{keyword}{const}\ \textcolor{keywordtype}{char}*\ scaleNameForKPDVE(\textcolor{keywordtype}{int}\ kpdve);}
+\DoxyCodeLine{00061\ }
+\DoxyCodeLine{00062\ \textcolor{comment}{//\ utility\ for\ printing\ binary\ values}}
+\DoxyCodeLine{00063\ \textcolor{keyword}{const}\ \textcolor{keywordtype}{char}*\ kpdve\_as\_string(\textcolor{keywordtype}{int}\ kpdve);}
+\DoxyCodeLine{00064\ }
+\DoxyCodeLine{00065\ }
+\DoxyCodeLine{00066\ \textcolor{preprocessor}{\#endif\ }\textcolor{comment}{//\ QDKPDVE\_NAMING\_H}}
+
+\end{DoxyCode}

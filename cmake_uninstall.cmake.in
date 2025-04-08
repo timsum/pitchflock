@@ -1,0 +1,10 @@
+if(NOT DEFINED CMAKE_INSTALL_PREFIX)
+    message(FATAL_ERROR "CMAKE_INSTALL_PREFIX is not defined.")
+endif()
+
+file(REMOVE_RECURSE
+    "@CMAKE_INSTALL_PREFIX@/lib/libpitchflock.a"
+    "@CMAKE_INSTALL_PREFIX@/include/pitchflock"
+    "@CMAKE_INSTALL_PREFIX@/bin/test_harmony_state_default"
+    # Add other installed files here
+)

@@ -1,0 +1,61 @@
+\doxysection{qdkpdve\+\_\+statemaker.\+h}
+\hypertarget{qdkpdve__statemaker_8h_source}{}\label{qdkpdve__statemaker_8h_source}\index{include/qdkpdve\_statemaker.h@{include/qdkpdve\_statemaker.h}}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ \textcolor{comment}{//}}
+\DoxyCodeLine{00002\ \textcolor{comment}{//\ \ qdkpdve\_statemaker.h}}
+\DoxyCodeLine{00003\ \textcolor{comment}{//\ \ pitchflock}}
+\DoxyCodeLine{00004\ \textcolor{comment}{//}}
+\DoxyCodeLine{00005\ \textcolor{comment}{//\ \ Created\ by\ Tim\ Summers\ on\ 6/12/23.}}
+\DoxyCodeLine{00006\ \textcolor{comment}{//}}
+\DoxyCodeLine{00007\ }
+\DoxyCodeLine{00008\ }
+\DoxyCodeLine{00009\ \textcolor{preprocessor}{\#ifndef\ qdkpdve\_statemaker\_h}}
+\DoxyCodeLine{00010\ \textcolor{preprocessor}{\#define\ qdkpdve\_statemaker\_h}}
+\DoxyCodeLine{00011\ }
+\DoxyCodeLine{00012\ \textcolor{preprocessor}{\#include\ <stdio.h>}}
+\DoxyCodeLine{00013\ \textcolor{preprocessor}{\#include\ <stdlib.h>}}
+\DoxyCodeLine{00014\ \textcolor{preprocessor}{\#include\ <math.h>}}
+\DoxyCodeLine{00015\ \textcolor{preprocessor}{\#include\ <string.h>}}
+\DoxyCodeLine{00016\ \textcolor{preprocessor}{\#include\ "{}harmony\_state.h"{}}}
+\DoxyCodeLine{00017\ \textcolor{preprocessor}{\#include\ "{}qdkpdve.h"{}}}
+\DoxyCodeLine{00018\ \textcolor{preprocessor}{\#include\ "{}qdkpdve\_analysis.h"{}}}
+\DoxyCodeLine{00019\ \textcolor{preprocessor}{\#include\ "{}qdkpdve\_harmonycrystal.h"{}}}
+\DoxyCodeLine{00020\ }
+\DoxyCodeLine{00021\ \textcolor{preprocessor}{\#endif\ }\textcolor{comment}{/*\ qdkpdve\_statemaker\_h\ */}\textcolor{preprocessor}{}}
+\DoxyCodeLine{00022\ }
+\DoxyCodeLine{00023\ }
+\DoxyCodeLine{00024\ \textcolor{comment}{//\ KPDVE\ ENCODING\ for\ C}}
+\DoxyCodeLine{00025\ \textcolor{keywordtype}{int}\ KPDVEtoBinaryEncoding(\textcolor{keywordtype}{int}\ aKPDVE[]);}
+\DoxyCodeLine{00026\ \textcolor{keywordtype}{void}\ binaryEncodingToKPDVE(\textcolor{keywordtype}{int}\ encodedByte,\ \textcolor{keywordtype}{int}\ result[]);}
+\DoxyCodeLine{00027\ \textcolor{comment}{//\ //////////////////////////////////}}
+\DoxyCodeLine{00028\ }
+\DoxyCodeLine{00029\ \textcolor{keywordtype}{int}\ undo\_kp\_for\_input\_val(\textcolor{keywordtype}{int}\ input\_val,\ \textcolor{keywordtype}{int}\ k,\ \textcolor{keywordtype}{int}\ p);}
+\DoxyCodeLine{00030\ \textcolor{keywordtype}{float}\ modDistance(\textcolor{keywordtype}{int}\ val1,\ \textcolor{keywordtype}{int}\ val2,\ \textcolor{keywordtype}{int}\ mod);}
+\DoxyCodeLine{00031\ \textcolor{keywordtype}{double}\ KPD\_distance(\textcolor{keywordtype}{int}\ kpdve\_1,\ \textcolor{keywordtype}{int}\ kpdve\_2);}
+\DoxyCodeLine{00032\ }
+\DoxyCodeLine{00033\ \mbox{\hyperlink{structharmony__state}{harmony\_state}}\ harmony\_state\_default(\textcolor{keywordtype}{void});}
+\DoxyCodeLine{00034\ \mbox{\hyperlink{structharmony__state}{harmony\_state}}\ harmony\_state\_from\_kpdve(\textcolor{keywordtype}{int}\ a\_kpdve);}
+\DoxyCodeLine{00035\ \mbox{\hyperlink{structharmony__state}{harmony\_state}}\ harmony\_state\_from\_binary(\textcolor{keywordtype}{int}\ chroma\_val);}
+\DoxyCodeLine{00036\ \mbox{\hyperlink{structharmony__state}{harmony\_state}}\ harmony\_state\_from\_binary\_w\_context(\textcolor{keywordtype}{int}\ chroma\_val,\ \textcolor{keywordtype}{int}\ contextkpdve);}
+\DoxyCodeLine{00037\ \mbox{\hyperlink{structharmony__state}{harmony\_state}}\ harmony\_state\_from\_min\_encoding(\textcolor{keywordtype}{int}\ kpdve\_bin\_encoding);}
+\DoxyCodeLine{00038\ }
+\DoxyCodeLine{00039\ \textcolor{comment}{//\ THESE\ need\ pointers}}
+\DoxyCodeLine{00040\ \textcolor{keywordtype}{void}\ set\_kp\_list(\mbox{\hyperlink{structharmony__state}{harmony\_state}}\ *a\_state);}
+\DoxyCodeLine{00041\ \textcolor{keywordtype}{void}\ set\_min\_index(\mbox{\hyperlink{structharmony__state}{harmony\_state}}\ *current\_state,\ \textcolor{keywordtype}{int}\ context);}
+\DoxyCodeLine{00042\ \textcolor{keywordtype}{void}\ choose\_kpdve\_from\_context(\mbox{\hyperlink{structharmony__state}{harmony\_state}}\ *current\_state,\ \textcolor{keywordtype}{int}\ context);}
+\DoxyCodeLine{00043\ }
+\DoxyCodeLine{00044\ \textcolor{comment}{//\ THESE\ ARE\ THE\ ESSENTIAL\ ADJUSTMENTS}}
+\DoxyCodeLine{00045\ \textcolor{keywordtype}{void}\ adjust\_harmony\_state\_from\_min\_encoding(\mbox{\hyperlink{structharmony__state}{harmony\_state}}\ *a\_state,\ \textcolor{keywordtype}{int}\ kpdve\_bin\_encoding);}
+\DoxyCodeLine{00046\ \textcolor{keywordtype}{void}\ adjust\_harmony\_state\_from\_chroma(\mbox{\hyperlink{structharmony__state}{harmony\_state}}\ *a\_state,\ \textcolor{keywordtype}{int}\ chroma\_val);}
+\DoxyCodeLine{00047\ \textcolor{keywordtype}{void}\ adjust\_harmony\_state\_from\_chroma\_and\_context(\mbox{\hyperlink{structharmony__state}{harmony\_state}}\ *a\_state,\ \textcolor{keywordtype}{int}\ chroma\_val,\ \textcolor{keywordtype}{int}\ context);}
+\DoxyCodeLine{00048\ \textcolor{keywordtype}{void}\ adjust\_harmony\_state\_from\_chroma\_lr\_and\_context(\mbox{\hyperlink{structharmony__state}{harmony\_state}}\ *a\_state,\ \textcolor{keywordtype}{int}\ chroma\_val,\ \textcolor{keywordtype}{int}\ context);}
+\DoxyCodeLine{00049\ \textcolor{keywordtype}{int}\ reverse\_12\_bits(\ \textcolor{keywordtype}{int}\ num);}
+\DoxyCodeLine{00050\ \textcolor{keywordtype}{void}\ adjust\_harmony\_state\_from\_kpdve(\mbox{\hyperlink{structharmony__state}{harmony\_state}}\ *a\_state,\ \textcolor{keywordtype}{int}\ a\_kpdve);}
+\DoxyCodeLine{00051\ }
+\DoxyCodeLine{00052\ \textcolor{keywordtype}{void}\ encode\_and\_validate\_state(\mbox{\hyperlink{structharmony__state}{harmony\_state}}\ *a\_state);}
+\DoxyCodeLine{00053\ }
+\DoxyCodeLine{00054\ }
+\DoxyCodeLine{00055\ }
+
+\end{DoxyCode}

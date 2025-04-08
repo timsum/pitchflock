@@ -1,0 +1,421 @@
+\doxysection{src/qdkpdve\+\_\+statemaker.c File Reference}
+\hypertarget{qdkpdve__statemaker_8c}{}\label{qdkpdve__statemaker_8c}\index{src/qdkpdve\_statemaker.c@{src/qdkpdve\_statemaker.c}}
+
+
+Implementation of functions for managing and analyzing harmony states in the pitchflock system.  
+
+
+{\ttfamily \#include "{}../include/qdkpdve\+\_\+statemaker.\+h"{}}\newline
+{\ttfamily \#include "{}../include/harmony\+\_\+state.\+h"{}}\newline
+{\ttfamily \#include "{}../include/qdkpdve.\+h"{}}\newline
+{\ttfamily \#include "{}../include/qdkpdve\+\_\+analysis.\+h"{}}\newline
+{\ttfamily \#include "{}../include/qdkpdve\+\_\+harmonycrystal.\+h"{}}\newline
+Include dependency graph for qdkpdve\+\_\+statemaker.\+c\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{qdkpdve__statemaker_8c__incl}
+\end{center}
+\end{figure}
+\doxysubsubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+int \mbox{\hyperlink{qdkpdve__statemaker_8c_a2f058a58b8ae9b26e26d94a3e7d78e79}{undo\+\_\+kp\+\_\+for\+\_\+input\+\_\+val}} (int input\+\_\+val, int k, int p)
+\begin{DoxyCompactList}\small\item\em Reduces an input value by applying modular rotation and compression. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{qdkpdve__statemaker_8c_a89b77c24729c56e6c3b20dc43dc66f2f}{set\+\_\+kp\+\_\+list}} (\mbox{\hyperlink{structharmony__state}{harmony\+\_\+state}} \texorpdfstring{$\ast$}{*}a\+\_\+state)
+\begin{DoxyCompactList}\small\item\em Generates a list of valid KPDVE encodings for the given harmony state. \end{DoxyCompactList}\item 
+float \mbox{\hyperlink{qdkpdve__statemaker_8c_a8670eaa302999fa30947ffa6fe7fa237}{mod\+Distance}} (int val1, int val2, int mod)
+\begin{DoxyCompactList}\small\item\em Calculates the modular distance between two values. \end{DoxyCompactList}\item 
+float \mbox{\hyperlink{qdkpdve__statemaker_8c_a6a0dba96c20fa25c2d8834e8a4f8e623}{biased\+Mod\+Distance}} (int val1, int val2, int mod, float bias)
+\begin{DoxyCompactList}\small\item\em Calculates a biased modular distance between two values. \end{DoxyCompactList}\item 
+double \mbox{\hyperlink{qdkpdve__statemaker_8c_aeaa9ec572d64e6c27cbc2ca195477b50}{KPD\+\_\+distance}} (int kpdve\+\_\+1, int kpdve\+\_\+2)
+\begin{DoxyCompactList}\small\item\em Calculates the distance between two KPDVE encodings. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{qdkpdve__statemaker_8c_a6f0d3ed11b940851d99378dc8b15a3cd}{set\+\_\+min\+\_\+index}} (\mbox{\hyperlink{structharmony__state}{harmony\+\_\+state}} \texorpdfstring{$\ast$}{*}current\+\_\+state, int context)
+\begin{DoxyCompactList}\small\item\em Sets the minimum index in the harmony state based on the context. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{structharmony__state}{harmony\+\_\+state}} \mbox{\hyperlink{qdkpdve__statemaker_8c_a8a847eb4eaa9c25a7edbea2ba8e5766b}{harmony\+\_\+state\+\_\+from\+\_\+binary}} (int chroma\+\_\+val)
+\begin{DoxyCompactList}\small\item\em Creates a harmony state from a binary chroma value (direction Hebrew). \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{qdkpdve__statemaker_8c_af16e3bb7ba57ca82b90bd745ef615648}{choose\+\_\+kpdve\+\_\+from\+\_\+context}} (\mbox{\hyperlink{structharmony__state}{harmony\+\_\+state}} \texorpdfstring{$\ast$}{*}current\+\_\+state, int context)
+\begin{DoxyCompactList}\small\item\em Adjusts the harmony state context when choosing a KPDVE from the kpdve list after analyzing chroma. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{structharmony__state}{harmony\+\_\+state}} \mbox{\hyperlink{qdkpdve__statemaker_8c_ae801b98d09b9ec408de7dcb396b47862}{harmony\+\_\+state\+\_\+from\+\_\+binary\+\_\+w\+\_\+context}} (int chroma\+\_\+val, int contextkpdve)
+\begin{DoxyCompactList}\small\item\em Creates a harmony state from a binary chroma value and a context KPDVE. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{structharmony__state}{harmony\+\_\+state}} \mbox{\hyperlink{qdkpdve__statemaker_8c_a3a50a07b1653e4dcbebeb8107b0284ed}{harmony\+\_\+state\+\_\+from\+\_\+kpdve}} (int a\+\_\+kpdve)
+\begin{DoxyCompactList}\small\item\em Creates a harmony state from a KPDVE value. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{structharmony__state}{harmony\+\_\+state}} \mbox{\hyperlink{qdkpdve__statemaker_8c_a84c193f2dee5031b66d606ca7bc77a94}{harmony\+\_\+state\+\_\+default}} (void)
+\begin{DoxyCompactList}\small\item\em Creates a default harmony state with a specific KPDVE value -- an F major triad, as base of lydian mode. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{structharmony__state}{harmony\+\_\+state}} \mbox{\hyperlink{qdkpdve__statemaker_8c_a12888cfb7f60ac4f7d5c9efdd2d4ddee}{harmony\+\_\+state\+\_\+from\+\_\+min\+\_\+encoding}} (int kpdve\+\_\+bin\+\_\+encoding)
+\begin{DoxyCompactList}\small\item\em Creates a harmony state from a minimum encoding value (X\texorpdfstring{$\sim$}{\string~}\texorpdfstring{$\sim$}{\string~}\texorpdfstring{$\sim$}{\string~}k\+\_\+\+\_\+\+\_\+p\+\_\+\+\_\+d\+\_\+\+\_\+v\+\_\+\+\_\+e\+\_\+\+\_\+\+B-\/\+A-\/\+G-\/\+FE-\/\+D-\/C) \end{DoxyCompactList}\item 
+\Hypertarget{qdkpdve__statemaker_8c_ad1ca321b28f151d1e7eb2f3e1180d93c}\label{qdkpdve__statemaker_8c_ad1ca321b28f151d1e7eb2f3e1180d93c} 
+void {\bfseries adjust\+\_\+harmony\+\_\+state\+\_\+from\+\_\+min\+\_\+encoding} (\mbox{\hyperlink{structharmony__state}{harmony\+\_\+state}} \texorpdfstring{$\ast$}{*}a\+\_\+state, int kpdve\+\_\+bin\+\_\+encoding)
+\item 
+void \mbox{\hyperlink{qdkpdve__statemaker_8c_a99c0fd024046aba04989ffa5ed2d4898}{adjust\+\_\+harmony\+\_\+state\+\_\+from\+\_\+chroma}} (\mbox{\hyperlink{structharmony__state}{harmony\+\_\+state}} \texorpdfstring{$\ast$}{*}a\+\_\+state, int chroma\+\_\+val)
+\begin{DoxyCompactList}\small\item\em Adjusts an existing harmony state based on chroma input. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{qdkpdve__statemaker_8c_a38ba3bc311247cb61aab67f7bb60694c}{adjust\+\_\+harmony\+\_\+state\+\_\+from\+\_\+chroma\+\_\+and\+\_\+context}} (\mbox{\hyperlink{structharmony__state}{harmony\+\_\+state}} \texorpdfstring{$\ast$}{*}a\+\_\+state, int chroma\+\_\+val, int context)
+\begin{DoxyCompactList}\small\item\em Adjusts a harmony state based on chroma AND context. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{qdkpdve__statemaker_8c_a03ec22799a14c708a8ac1d44af8f2282}{adjust\+\_\+harmony\+\_\+state\+\_\+from\+\_\+chroma\+\_\+lr\+\_\+and\+\_\+context}} (\mbox{\hyperlink{structharmony__state}{harmony\+\_\+state}} \texorpdfstring{$\ast$}{*}a\+\_\+state, int chroma\+\_\+val, int context)
+\begin{DoxyCompactList}\small\item\em Adjusts a harmony state based on chroma (LEFT TO RIGHT AS IN ENGLISH!) and context. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{qdkpdve__statemaker_8c_a6aa36b37589df7a2c2b4bab18c4293e2}{reverse\+\_\+12\+\_\+bits}} (int num)
+\begin{DoxyCompactList}\small\item\em Reverses the bits of a 12-\/bit integer. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{qdkpdve__statemaker_8c_a179a93acc591046b29d1264d0fb46bb5}{adjust\+\_\+harmony\+\_\+state\+\_\+from\+\_\+kpdve}} (\mbox{\hyperlink{structharmony__state}{harmony\+\_\+state}} \texorpdfstring{$\ast$}{*}a\+\_\+state, int a\+\_\+kpdve)
+\begin{DoxyCompactList}\small\item\em Adjusts a harmony state based on a KPDVE value. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{qdkpdve__statemaker_8c_a62821604d38b7e040051b6f4f127cef7}{encode\+\_\+and\+\_\+validate\+\_\+state}} (\mbox{\hyperlink{structharmony__state}{harmony\+\_\+state}} \texorpdfstring{$\ast$}{*}a\+\_\+state)
+\begin{DoxyCompactList}\small\item\em Encodes and validates the harmony state. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Implementation of functions for managing and analyzing harmony states in the pitchflock system. 
+
+This file contains functions for generating, adjusting, and validating harmony states, as well as calculating distances and encoding/decoding KPDVE values. It provides the core logic for harmony state manipulation and analysis. 
+
+\doxysubsection{Function Documentation}
+\Hypertarget{qdkpdve__statemaker_8c_a99c0fd024046aba04989ffa5ed2d4898}\index{qdkpdve\_statemaker.c@{qdkpdve\_statemaker.c}!adjust\_harmony\_state\_from\_chroma@{adjust\_harmony\_state\_from\_chroma}}
+\index{adjust\_harmony\_state\_from\_chroma@{adjust\_harmony\_state\_from\_chroma}!qdkpdve\_statemaker.c@{qdkpdve\_statemaker.c}}
+\doxysubsubsection{\texorpdfstring{adjust\_harmony\_state\_from\_chroma()}{adjust\_harmony\_state\_from\_chroma()}}
+{\footnotesize\ttfamily \label{qdkpdve__statemaker_8c_a99c0fd024046aba04989ffa5ed2d4898} 
+void adjust\+\_\+harmony\+\_\+state\+\_\+from\+\_\+chroma (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structharmony__state}{harmony\+\_\+state}} \texorpdfstring{$\ast$}{*}}]{a\+\_\+state}{, }\item[{int}]{chroma\+\_\+val}{}\end{DoxyParamCaption})}
+
+
+
+Adjusts an existing harmony state based on chroma input. 
+
+This function updates the chromatic notes of the harmony state and recalculates the KPDVE list. It then selects the most appropriate KPDVE encoding based on the current state.
+
+
+\begin{DoxyParams}{Parameters}
+{\em a\+\_\+state} & Pointer to the harmony state to adjust. \\
+\hline
+{\em chroma\+\_\+val} & The chroma value to analyze (12-\/bit integer, left to right as in Hebrew). \\
+\hline
+\end{DoxyParams}
+\Hypertarget{qdkpdve__statemaker_8c_a38ba3bc311247cb61aab67f7bb60694c}\index{qdkpdve\_statemaker.c@{qdkpdve\_statemaker.c}!adjust\_harmony\_state\_from\_chroma\_and\_context@{adjust\_harmony\_state\_from\_chroma\_and\_context}}
+\index{adjust\_harmony\_state\_from\_chroma\_and\_context@{adjust\_harmony\_state\_from\_chroma\_and\_context}!qdkpdve\_statemaker.c@{qdkpdve\_statemaker.c}}
+\doxysubsubsection{\texorpdfstring{adjust\_harmony\_state\_from\_chroma\_and\_context()}{adjust\_harmony\_state\_from\_chroma\_and\_context()}}
+{\footnotesize\ttfamily \label{qdkpdve__statemaker_8c_a38ba3bc311247cb61aab67f7bb60694c} 
+void adjust\+\_\+harmony\+\_\+state\+\_\+from\+\_\+chroma\+\_\+and\+\_\+context (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structharmony__state}{harmony\+\_\+state}} \texorpdfstring{$\ast$}{*}}]{a\+\_\+state}{, }\item[{int}]{chroma\+\_\+val}{, }\item[{int}]{context}{}\end{DoxyParamCaption})}
+
+
+
+Adjusts a harmony state based on chroma AND context. 
+
+This function updates the chromatic notes of the harmony state and recalculates the KPDVE list. It then selects the most appropriate KPDVE encoding based on the provided context. Creates a hybrid markov chain.
+
+
+\begin{DoxyParams}{Parameters}
+{\em a\+\_\+state} & Pointer to the harmony state to adjust. \\
+\hline
+{\em chroma\+\_\+val} & The chroma value to analyze (12-\/bit integer). \\
+\hline
+{\em context} & The context KPDVE value to guide the adjustment. \\
+\hline
+\end{DoxyParams}
+\Hypertarget{qdkpdve__statemaker_8c_a03ec22799a14c708a8ac1d44af8f2282}\index{qdkpdve\_statemaker.c@{qdkpdve\_statemaker.c}!adjust\_harmony\_state\_from\_chroma\_lr\_and\_context@{adjust\_harmony\_state\_from\_chroma\_lr\_and\_context}}
+\index{adjust\_harmony\_state\_from\_chroma\_lr\_and\_context@{adjust\_harmony\_state\_from\_chroma\_lr\_and\_context}!qdkpdve\_statemaker.c@{qdkpdve\_statemaker.c}}
+\doxysubsubsection{\texorpdfstring{adjust\_harmony\_state\_from\_chroma\_lr\_and\_context()}{adjust\_harmony\_state\_from\_chroma\_lr\_and\_context()}}
+{\footnotesize\ttfamily \label{qdkpdve__statemaker_8c_a03ec22799a14c708a8ac1d44af8f2282} 
+void adjust\+\_\+harmony\+\_\+state\+\_\+from\+\_\+chroma\+\_\+lr\+\_\+and\+\_\+context (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structharmony__state}{harmony\+\_\+state}} \texorpdfstring{$\ast$}{*}}]{a\+\_\+state}{, }\item[{int}]{chroma\+\_\+val}{, }\item[{int}]{context}{}\end{DoxyParamCaption})}
+
+
+
+Adjusts a harmony state based on chroma (LEFT TO RIGHT AS IN ENGLISH!) and context. 
+
+This function updates the chromatic notes of the harmony state and recalculates the KPDVE list. It then selects the most appropriate KPDVE encoding based on the provided context. . Creates a hybrid markov chain.
+
+
+\begin{DoxyParams}{Parameters}
+{\em a\+\_\+state} & Pointer to the harmony state to adjust. \\
+\hline
+{\em chroma\+\_\+val} & The chroma value to analyze (12-\/bit integer). \\
+\hline
+{\em context} & The context KPDVE value to guide the adjustment. \\
+\hline
+\end{DoxyParams}
+\Hypertarget{qdkpdve__statemaker_8c_a179a93acc591046b29d1264d0fb46bb5}\index{qdkpdve\_statemaker.c@{qdkpdve\_statemaker.c}!adjust\_harmony\_state\_from\_kpdve@{adjust\_harmony\_state\_from\_kpdve}}
+\index{adjust\_harmony\_state\_from\_kpdve@{adjust\_harmony\_state\_from\_kpdve}!qdkpdve\_statemaker.c@{qdkpdve\_statemaker.c}}
+\doxysubsubsection{\texorpdfstring{adjust\_harmony\_state\_from\_kpdve()}{adjust\_harmony\_state\_from\_kpdve()}}
+{\footnotesize\ttfamily \label{qdkpdve__statemaker_8c_a179a93acc591046b29d1264d0fb46bb5} 
+void adjust\+\_\+harmony\+\_\+state\+\_\+from\+\_\+kpdve (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structharmony__state}{harmony\+\_\+state}} \texorpdfstring{$\ast$}{*}}]{a\+\_\+state}{, }\item[{int}]{a\+\_\+kpdve}{}\end{DoxyParamCaption})}
+
+
+
+Adjusts a harmony state based on a KPDVE value. 
+
+This function updates the KPDVE value of the harmony state and recalculates the chromatic notes. It also sets the KPDVE list and selects the minimum index based on the new KPDVE value.
+
+
+\begin{DoxyParams}{Parameters}
+{\em a\+\_\+state} & Pointer to the harmony state to adjust. \\
+\hline
+{\em a\+\_\+kpdve} & The KPDVE value to set. \\
+\hline
+\end{DoxyParams}
+\Hypertarget{qdkpdve__statemaker_8c_a6a0dba96c20fa25c2d8834e8a4f8e623}\index{qdkpdve\_statemaker.c@{qdkpdve\_statemaker.c}!biasedModDistance@{biasedModDistance}}
+\index{biasedModDistance@{biasedModDistance}!qdkpdve\_statemaker.c@{qdkpdve\_statemaker.c}}
+\doxysubsubsection{\texorpdfstring{biasedModDistance()}{biasedModDistance()}}
+{\footnotesize\ttfamily \label{qdkpdve__statemaker_8c_a6a0dba96c20fa25c2d8834e8a4f8e623} 
+float biased\+Mod\+Distance (\begin{DoxyParamCaption}\item[{int}]{val1}{, }\item[{int}]{val2}{, }\item[{int}]{mod}{, }\item[{float}]{bias}{}\end{DoxyParamCaption})}
+
+
+
+Calculates a biased modular distance between two values. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em val1} & The first value. \\
+\hline
+{\em val2} & The second value. \\
+\hline
+{\em mod} & The modulus for the calculation. \\
+\hline
+{\em bias} & The bias factor to apply. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+The biased modular distance between the two values. 
+\end{DoxyReturn}
+\Hypertarget{qdkpdve__statemaker_8c_af16e3bb7ba57ca82b90bd745ef615648}\index{qdkpdve\_statemaker.c@{qdkpdve\_statemaker.c}!choose\_kpdve\_from\_context@{choose\_kpdve\_from\_context}}
+\index{choose\_kpdve\_from\_context@{choose\_kpdve\_from\_context}!qdkpdve\_statemaker.c@{qdkpdve\_statemaker.c}}
+\doxysubsubsection{\texorpdfstring{choose\_kpdve\_from\_context()}{choose\_kpdve\_from\_context()}}
+{\footnotesize\ttfamily \label{qdkpdve__statemaker_8c_af16e3bb7ba57ca82b90bd745ef615648} 
+void choose\+\_\+kpdve\+\_\+from\+\_\+context (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structharmony__state}{harmony\+\_\+state}} \texorpdfstring{$\ast$}{*}}]{current\+\_\+state}{, }\item[{int}]{context}{}\end{DoxyParamCaption})}
+
+
+
+Adjusts the harmony state context when choosing a KPDVE from the kpdve list after analyzing chroma. 
+
+This function updates the chromatic notes of the harmony state and recalculates the KPDVE list. It then selects the most appropriate KPDVE encoding based on the provided context.
+
+
+\begin{DoxyParams}{Parameters}
+{\em a\+\_\+state} & Pointer to the harmony state to adjust. \\
+\hline
+{\em chroma\+\_\+val} & The chroma value to analyze (12-\/bit integer). \\
+\hline
+{\em context} & The context KPDVE value to guide the adjustment. \\
+\hline
+\end{DoxyParams}
+\Hypertarget{qdkpdve__statemaker_8c_a62821604d38b7e040051b6f4f127cef7}\index{qdkpdve\_statemaker.c@{qdkpdve\_statemaker.c}!encode\_and\_validate\_state@{encode\_and\_validate\_state}}
+\index{encode\_and\_validate\_state@{encode\_and\_validate\_state}!qdkpdve\_statemaker.c@{qdkpdve\_statemaker.c}}
+\doxysubsubsection{\texorpdfstring{encode\_and\_validate\_state()}{encode\_and\_validate\_state()}}
+{\footnotesize\ttfamily \label{qdkpdve__statemaker_8c_a62821604d38b7e040051b6f4f127cef7} 
+void encode\+\_\+and\+\_\+validate\+\_\+state (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structharmony__state}{harmony\+\_\+state}} \texorpdfstring{$\ast$}{*}}]{a\+\_\+state}{}\end{DoxyParamCaption})}
+
+
+
+Encodes and validates the harmony state. 
+
+This function encodes the harmony state into a binary format and validates its integrity by checking the number of chromatic notes and the KPDVE list length.
+
+
+\begin{DoxyParams}{Parameters}
+{\em a\+\_\+state} & Pointer to the harmony state to encode and validate. \\
+\hline
+\end{DoxyParams}
+\Hypertarget{qdkpdve__statemaker_8c_a84c193f2dee5031b66d606ca7bc77a94}\index{qdkpdve\_statemaker.c@{qdkpdve\_statemaker.c}!harmony\_state\_default@{harmony\_state\_default}}
+\index{harmony\_state\_default@{harmony\_state\_default}!qdkpdve\_statemaker.c@{qdkpdve\_statemaker.c}}
+\doxysubsubsection{\texorpdfstring{harmony\_state\_default()}{harmony\_state\_default()}}
+{\footnotesize\ttfamily \label{qdkpdve__statemaker_8c_a84c193f2dee5031b66d606ca7bc77a94} 
+\mbox{\hyperlink{structharmony__state}{harmony\+\_\+state}} harmony\+\_\+state\+\_\+default (\begin{DoxyParamCaption}\item[{void}]{}{}\end{DoxyParamCaption})}
+
+
+
+Creates a default harmony state with a specific KPDVE value -- an F major triad, as base of lydian mode. 
+
+This function initializes a harmony state with a default KPDVE value and sets the chromatic notes to represent a major triad.
+
+\begin{DoxyReturn}{Returns}
+The default harmony state. 
+\end{DoxyReturn}
+\Hypertarget{qdkpdve__statemaker_8c_a8a847eb4eaa9c25a7edbea2ba8e5766b}\index{qdkpdve\_statemaker.c@{qdkpdve\_statemaker.c}!harmony\_state\_from\_binary@{harmony\_state\_from\_binary}}
+\index{harmony\_state\_from\_binary@{harmony\_state\_from\_binary}!qdkpdve\_statemaker.c@{qdkpdve\_statemaker.c}}
+\doxysubsubsection{\texorpdfstring{harmony\_state\_from\_binary()}{harmony\_state\_from\_binary()}}
+{\footnotesize\ttfamily \label{qdkpdve__statemaker_8c_a8a847eb4eaa9c25a7edbea2ba8e5766b} 
+\mbox{\hyperlink{structharmony__state}{harmony\+\_\+state}} harmony\+\_\+state\+\_\+from\+\_\+binary (\begin{DoxyParamCaption}\item[{int}]{chroma\+\_\+val}{}\end{DoxyParamCaption})}
+
+
+
+Creates a harmony state from a binary chroma value (direction Hebrew). 
+
+
+\begin{DoxyParams}{Parameters}
+{\em chroma\+\_\+val} & The binary chroma value to process. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+The generated harmony state. 
+\end{DoxyReturn}
+\Hypertarget{qdkpdve__statemaker_8c_ae801b98d09b9ec408de7dcb396b47862}\index{qdkpdve\_statemaker.c@{qdkpdve\_statemaker.c}!harmony\_state\_from\_binary\_w\_context@{harmony\_state\_from\_binary\_w\_context}}
+\index{harmony\_state\_from\_binary\_w\_context@{harmony\_state\_from\_binary\_w\_context}!qdkpdve\_statemaker.c@{qdkpdve\_statemaker.c}}
+\doxysubsubsection{\texorpdfstring{harmony\_state\_from\_binary\_w\_context()}{harmony\_state\_from\_binary\_w\_context()}}
+{\footnotesize\ttfamily \label{qdkpdve__statemaker_8c_ae801b98d09b9ec408de7dcb396b47862} 
+\mbox{\hyperlink{structharmony__state}{harmony\+\_\+state}} harmony\+\_\+state\+\_\+from\+\_\+binary\+\_\+w\+\_\+context (\begin{DoxyParamCaption}\item[{int}]{chroma\+\_\+val}{, }\item[{int}]{contextkpdve}{}\end{DoxyParamCaption})}
+
+
+
+Creates a harmony state from a binary chroma value and a context KPDVE. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em chroma\+\_\+val} & The binary chroma value to process (12 bits, left to right as in Hebrew). \\
+\hline
+{\em contextkpdve} & The context KPDVE value to guide the adjustment. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+The generated harmony state. 
+\end{DoxyReturn}
+\Hypertarget{qdkpdve__statemaker_8c_a3a50a07b1653e4dcbebeb8107b0284ed}\index{qdkpdve\_statemaker.c@{qdkpdve\_statemaker.c}!harmony\_state\_from\_kpdve@{harmony\_state\_from\_kpdve}}
+\index{harmony\_state\_from\_kpdve@{harmony\_state\_from\_kpdve}!qdkpdve\_statemaker.c@{qdkpdve\_statemaker.c}}
+\doxysubsubsection{\texorpdfstring{harmony\_state\_from\_kpdve()}{harmony\_state\_from\_kpdve()}}
+{\footnotesize\ttfamily \label{qdkpdve__statemaker_8c_a3a50a07b1653e4dcbebeb8107b0284ed} 
+\mbox{\hyperlink{structharmony__state}{harmony\+\_\+state}} harmony\+\_\+state\+\_\+from\+\_\+kpdve (\begin{DoxyParamCaption}\item[{int}]{a\+\_\+kpdve}{}\end{DoxyParamCaption})}
+
+
+
+Creates a harmony state from a KPDVE value. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em a\+\_\+kpdve} & The KPDVE value to process. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+The generated harmony state. 
+\end{DoxyReturn}
+\Hypertarget{qdkpdve__statemaker_8c_a12888cfb7f60ac4f7d5c9efdd2d4ddee}\index{qdkpdve\_statemaker.c@{qdkpdve\_statemaker.c}!harmony\_state\_from\_min\_encoding@{harmony\_state\_from\_min\_encoding}}
+\index{harmony\_state\_from\_min\_encoding@{harmony\_state\_from\_min\_encoding}!qdkpdve\_statemaker.c@{qdkpdve\_statemaker.c}}
+\doxysubsubsection{\texorpdfstring{harmony\_state\_from\_min\_encoding()}{harmony\_state\_from\_min\_encoding()}}
+{\footnotesize\ttfamily \label{qdkpdve__statemaker_8c_a12888cfb7f60ac4f7d5c9efdd2d4ddee} 
+\mbox{\hyperlink{structharmony__state}{harmony\+\_\+state}} harmony\+\_\+state\+\_\+from\+\_\+min\+\_\+encoding (\begin{DoxyParamCaption}\item[{int}]{kpdve\+\_\+bin\+\_\+encoding}{}\end{DoxyParamCaption})}
+
+
+
+Creates a harmony state from a minimum encoding value (X\texorpdfstring{$\sim$}{\string~}\texorpdfstring{$\sim$}{\string~}\texorpdfstring{$\sim$}{\string~}k\+\_\+\+\_\+\+\_\+p\+\_\+\+\_\+d\+\_\+\+\_\+v\+\_\+\+\_\+e\+\_\+\+\_\+\+B-\/\+A-\/\+G-\/\+FE-\/\+D-\/C) 
+
+This function extracts the KPDVE and chromatic notes from the provided minimum encoding value and creates a corresponding harmony state.
+
+
+\begin{DoxyParams}{Parameters}
+{\em kpdve\+\_\+bin\+\_\+encoding} & The minimum encoding value (binary). \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+The generated harmony state. 
+\end{DoxyReturn}
+\Hypertarget{qdkpdve__statemaker_8c_aeaa9ec572d64e6c27cbc2ca195477b50}\index{qdkpdve\_statemaker.c@{qdkpdve\_statemaker.c}!KPD\_distance@{KPD\_distance}}
+\index{KPD\_distance@{KPD\_distance}!qdkpdve\_statemaker.c@{qdkpdve\_statemaker.c}}
+\doxysubsubsection{\texorpdfstring{KPD\_distance()}{KPD\_distance()}}
+{\footnotesize\ttfamily \label{qdkpdve__statemaker_8c_aeaa9ec572d64e6c27cbc2ca195477b50} 
+double KPD\+\_\+distance (\begin{DoxyParamCaption}\item[{int}]{kpdve\+\_\+1}{, }\item[{int}]{kpdve\+\_\+2}{}\end{DoxyParamCaption})}
+
+
+
+Calculates the distance between two KPDVE encodings. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em kpdve\+\_\+1} & The first KPDVE encoding. \\
+\hline
+{\em kpdve\+\_\+2} & The second KPDVE encoding. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+The distance between the two KPDVE encodings. 
+\end{DoxyReturn}
+\Hypertarget{qdkpdve__statemaker_8c_a8670eaa302999fa30947ffa6fe7fa237}\index{qdkpdve\_statemaker.c@{qdkpdve\_statemaker.c}!modDistance@{modDistance}}
+\index{modDistance@{modDistance}!qdkpdve\_statemaker.c@{qdkpdve\_statemaker.c}}
+\doxysubsubsection{\texorpdfstring{modDistance()}{modDistance()}}
+{\footnotesize\ttfamily \label{qdkpdve__statemaker_8c_a8670eaa302999fa30947ffa6fe7fa237} 
+float mod\+Distance (\begin{DoxyParamCaption}\item[{int}]{val1}{, }\item[{int}]{val2}{, }\item[{int}]{mod}{}\end{DoxyParamCaption})}
+
+
+
+Calculates the modular distance between two values. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em val1} & The first value. \\
+\hline
+{\em val2} & The second value. \\
+\hline
+{\em mod} & The modulus for the calculation. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+The modular distance between the two values. 
+\end{DoxyReturn}
+\Hypertarget{qdkpdve__statemaker_8c_a6aa36b37589df7a2c2b4bab18c4293e2}\index{qdkpdve\_statemaker.c@{qdkpdve\_statemaker.c}!reverse\_12\_bits@{reverse\_12\_bits}}
+\index{reverse\_12\_bits@{reverse\_12\_bits}!qdkpdve\_statemaker.c@{qdkpdve\_statemaker.c}}
+\doxysubsubsection{\texorpdfstring{reverse\_12\_bits()}{reverse\_12\_bits()}}
+{\footnotesize\ttfamily \label{qdkpdve__statemaker_8c_a6aa36b37589df7a2c2b4bab18c4293e2} 
+int reverse\+\_\+12\+\_\+bits (\begin{DoxyParamCaption}\item[{int}]{num}{}\end{DoxyParamCaption})}
+
+
+
+Reverses the bits of a 12-\/bit integer. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em num} & The 12-\/bit integer to reverse. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+The reversed 12-\/bit integer. 
+\end{DoxyReturn}
+\Hypertarget{qdkpdve__statemaker_8c_a89b77c24729c56e6c3b20dc43dc66f2f}\index{qdkpdve\_statemaker.c@{qdkpdve\_statemaker.c}!set\_kp\_list@{set\_kp\_list}}
+\index{set\_kp\_list@{set\_kp\_list}!qdkpdve\_statemaker.c@{qdkpdve\_statemaker.c}}
+\doxysubsubsection{\texorpdfstring{set\_kp\_list()}{set\_kp\_list()}}
+{\footnotesize\ttfamily \label{qdkpdve__statemaker_8c_a89b77c24729c56e6c3b20dc43dc66f2f} 
+void set\+\_\+kp\+\_\+list (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structharmony__state}{harmony\+\_\+state}} \texorpdfstring{$\ast$}{*}}]{a\+\_\+state}{}\end{DoxyParamCaption})}
+
+
+
+Generates a list of valid KPDVE encodings for the given harmony state. 
+
+This function iterates through all possible Key-\/\+Pattern (KP) combinations and calculates the corresponding Degree-\/\+Voiding-\/\+Extension (DVE) values. It populates the {\ttfamily kpdve\+\_\+list}, {\ttfamily dve\+\_\+list}, and {\ttfamily ve\+\_\+list} fields of the harmony state.
+
+
+\begin{DoxyParams}{Parameters}
+{\em a\+\_\+state} & Pointer to the harmony state to process. \\
+\hline
+\end{DoxyParams}
+\Hypertarget{qdkpdve__statemaker_8c_a6f0d3ed11b940851d99378dc8b15a3cd}\index{qdkpdve\_statemaker.c@{qdkpdve\_statemaker.c}!set\_min\_index@{set\_min\_index}}
+\index{set\_min\_index@{set\_min\_index}!qdkpdve\_statemaker.c@{qdkpdve\_statemaker.c}}
+\doxysubsubsection{\texorpdfstring{set\_min\_index()}{set\_min\_index()}}
+{\footnotesize\ttfamily \label{qdkpdve__statemaker_8c_a6f0d3ed11b940851d99378dc8b15a3cd} 
+void set\+\_\+min\+\_\+index (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structharmony__state}{harmony\+\_\+state}} \texorpdfstring{$\ast$}{*}}]{current\+\_\+state}{, }\item[{int}]{context}{}\end{DoxyParamCaption})}
+
+
+
+Sets the minimum index in the harmony state based on the context. 
+
+This function compares the KPDVE list in the harmony state with the context and selects the index with the minimum distance.
+
+
+\begin{DoxyParams}{Parameters}
+{\em current\+\_\+state} & Pointer to the current harmony state. \\
+\hline
+{\em context} & The context KPDVE value to compare against. \\
+\hline
+\end{DoxyParams}
+\Hypertarget{qdkpdve__statemaker_8c_a2f058a58b8ae9b26e26d94a3e7d78e79}\index{qdkpdve\_statemaker.c@{qdkpdve\_statemaker.c}!undo\_kp\_for\_input\_val@{undo\_kp\_for\_input\_val}}
+\index{undo\_kp\_for\_input\_val@{undo\_kp\_for\_input\_val}!qdkpdve\_statemaker.c@{qdkpdve\_statemaker.c}}
+\doxysubsubsection{\texorpdfstring{undo\_kp\_for\_input\_val()}{undo\_kp\_for\_input\_val()}}
+{\footnotesize\ttfamily \label{qdkpdve__statemaker_8c_a2f058a58b8ae9b26e26d94a3e7d78e79} 
+int undo\+\_\+kp\+\_\+for\+\_\+input\+\_\+val (\begin{DoxyParamCaption}\item[{int}]{input\+\_\+val}{, }\item[{int}]{k}{, }\item[{int}]{p}{}\end{DoxyParamCaption})}
+
+
+
+Reduces an input value by applying modular rotation and compression. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em input\+\_\+val} & The input value to process. \\
+\hline
+{\em k} & The key value for modular rotation. \\
+\hline
+{\em p} & The pattern value for compression. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+The compressed value after applying modular rotation and pattern filtering. 
+\end{DoxyReturn}

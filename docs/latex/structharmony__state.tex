@@ -1,0 +1,107 @@
+\doxysection{harmony\+\_\+state Struct Reference}
+\hypertarget{structharmony__state}{}\label{structharmony__state}\index{harmony\_state@{harmony\_state}}
+
+
+Represents the state of a harmonic structure.  
+
+
+
+
+{\ttfamily \#include $<$harmony\+\_\+state.\+h$>$}
+
+\doxysubsubsection*{Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+int \mbox{\hyperlink{structharmony__state_aec058a19d01b51a7e6f7a2d7d3118142}{encoded\+\_\+state}}
+\item 
+int \mbox{\hyperlink{structharmony__state_a3f9a63a91886b5540b00eca184c789b4}{chromatic\+\_\+notes}}
+\item 
+int \mbox{\hyperlink{structharmony__state_ad7449479c82efe85eee2543d6fd5f548}{kpdve}}
+\item 
+int \mbox{\hyperlink{structharmony__state_ad4d74e43b8d282e4d084112e5c59e634}{dve}}
+\item 
+int \mbox{\hyperlink{structharmony__state_a8f6c8ac8c374a13e5ccfcaba9c22342c}{ve}}
+\item 
+int \mbox{\hyperlink{structharmony__state_aafabc41a3a68393560b88b460ebb5d5e}{kpdve\+\_\+list\+\_\+length}}
+\item 
+int \mbox{\hyperlink{structharmony__state_abd3cf0b1db110c7b65e03d87cc400a36}{kpdve\+\_\+min\+\_\+index}}
+\item 
+int \mbox{\hyperlink{structharmony__state_a15d0adaeab7a1b5644045359ff2383a1}{kpdve\+\_\+list}} \mbox{[}84\mbox{]}
+\item 
+int \mbox{\hyperlink{structharmony__state_a5c99111c9941eae9948fbf2d5ce5ed00}{dve\+\_\+list}} \mbox{[}84\mbox{]}
+\item 
+int \mbox{\hyperlink{structharmony__state_a195372f5f5ba8da0ba581eadac32b2e5}{ve\+\_\+list}} \mbox{[}84\mbox{]}
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Represents the state of a harmonic structure. 
+
+This struct contains information about the encoded state, chromatic notes, and KPDVE (Key, Pattern, Degree, Voicing, Extension) values. It also includes lists for possible KPDVE encodings and their associated distances. 
+
+\doxysubsection{Member Data Documentation}
+\Hypertarget{structharmony__state_a3f9a63a91886b5540b00eca184c789b4}\index{harmony\_state@{harmony\_state}!chromatic\_notes@{chromatic\_notes}}
+\index{chromatic\_notes@{chromatic\_notes}!harmony\_state@{harmony\_state}}
+\doxysubsubsection{\texorpdfstring{chromatic\_notes}{chromatic\_notes}}
+{\footnotesize\ttfamily \label{structharmony__state_a3f9a63a91886b5540b00eca184c789b4} 
+int harmony\+\_\+state\+::chromatic\+\_\+notes}
+
+Chromatic notes represented as a 12-\/bit integer (right to left, as in Hebrew). \Hypertarget{structharmony__state_ad4d74e43b8d282e4d084112e5c59e634}\index{harmony\_state@{harmony\_state}!dve@{dve}}
+\index{dve@{dve}!harmony\_state@{harmony\_state}}
+\doxysubsubsection{\texorpdfstring{dve}{dve}}
+{\footnotesize\ttfamily \label{structharmony__state_ad4d74e43b8d282e4d084112e5c59e634} 
+int harmony\+\_\+state\+::dve}
+
+Encoded Degree-\/\+Voicing-\/\+Extension (DVE) value. \Hypertarget{structharmony__state_a5c99111c9941eae9948fbf2d5ce5ed00}\index{harmony\_state@{harmony\_state}!dve\_list@{dve\_list}}
+\index{dve\_list@{dve\_list}!harmony\_state@{harmony\_state}}
+\doxysubsubsection{\texorpdfstring{dve\_list}{dve\_list}}
+{\footnotesize\ttfamily \label{structharmony__state_a5c99111c9941eae9948fbf2d5ce5ed00} 
+int harmony\+\_\+state\+::dve\+\_\+list\mbox{[}84\mbox{]}}
+
+List of associated DVE values for each KPDVE encoding. \Hypertarget{structharmony__state_aec058a19d01b51a7e6f7a2d7d3118142}\index{harmony\_state@{harmony\_state}!encoded\_state@{encoded\_state}}
+\index{encoded\_state@{encoded\_state}!harmony\_state@{harmony\_state}}
+\doxysubsubsection{\texorpdfstring{encoded\_state}{encoded\_state}}
+{\footnotesize\ttfamily \label{structharmony__state_aec058a19d01b51a7e6f7a2d7d3118142} 
+int harmony\+\_\+state\+::encoded\+\_\+state}
+
+Encoded binary representation of the state (32 bits). \Hypertarget{structharmony__state_ad7449479c82efe85eee2543d6fd5f548}\index{harmony\_state@{harmony\_state}!kpdve@{kpdve}}
+\index{kpdve@{kpdve}!harmony\_state@{harmony\_state}}
+\doxysubsubsection{\texorpdfstring{kpdve}{kpdve}}
+{\footnotesize\ttfamily \label{structharmony__state_ad7449479c82efe85eee2543d6fd5f548} 
+int harmony\+\_\+state\+::kpdve}
+
+Encoded KPDVE value (3 bits for each of the first 4 values, 4 bits for the sign). \Hypertarget{structharmony__state_a15d0adaeab7a1b5644045359ff2383a1}\index{harmony\_state@{harmony\_state}!kpdve\_list@{kpdve\_list}}
+\index{kpdve\_list@{kpdve\_list}!harmony\_state@{harmony\_state}}
+\doxysubsubsection{\texorpdfstring{kpdve\_list}{kpdve\_list}}
+{\footnotesize\ttfamily \label{structharmony__state_a15d0adaeab7a1b5644045359ff2383a1} 
+int harmony\+\_\+state\+::kpdve\+\_\+list\mbox{[}84\mbox{]}}
+
+List of possible KPDVE encodings (maximum size\+: 84). \Hypertarget{structharmony__state_aafabc41a3a68393560b88b460ebb5d5e}\index{harmony\_state@{harmony\_state}!kpdve\_list\_length@{kpdve\_list\_length}}
+\index{kpdve\_list\_length@{kpdve\_list\_length}!harmony\_state@{harmony\_state}}
+\doxysubsubsection{\texorpdfstring{kpdve\_list\_length}{kpdve\_list\_length}}
+{\footnotesize\ttfamily \label{structharmony__state_aafabc41a3a68393560b88b460ebb5d5e} 
+int harmony\+\_\+state\+::kpdve\+\_\+list\+\_\+length}
+
+Number of valid KPDVE encodings in the list. \Hypertarget{structharmony__state_abd3cf0b1db110c7b65e03d87cc400a36}\index{harmony\_state@{harmony\_state}!kpdve\_min\_index@{kpdve\_min\_index}}
+\index{kpdve\_min\_index@{kpdve\_min\_index}!harmony\_state@{harmony\_state}}
+\doxysubsubsection{\texorpdfstring{kpdve\_min\_index}{kpdve\_min\_index}}
+{\footnotesize\ttfamily \label{structharmony__state_abd3cf0b1db110c7b65e03d87cc400a36} 
+int harmony\+\_\+state\+::kpdve\+\_\+min\+\_\+index}
+
+Index of the minimum distance KPDVE encoding. \Hypertarget{structharmony__state_a8f6c8ac8c374a13e5ccfcaba9c22342c}\index{harmony\_state@{harmony\_state}!ve@{ve}}
+\index{ve@{ve}!harmony\_state@{harmony\_state}}
+\doxysubsubsection{\texorpdfstring{ve}{ve}}
+{\footnotesize\ttfamily \label{structharmony__state_a8f6c8ac8c374a13e5ccfcaba9c22342c} 
+int harmony\+\_\+state\+::ve}
+
+Encoded Voicing-\/\+Extension (VE) value. \Hypertarget{structharmony__state_a195372f5f5ba8da0ba581eadac32b2e5}\index{harmony\_state@{harmony\_state}!ve\_list@{ve\_list}}
+\index{ve\_list@{ve\_list}!harmony\_state@{harmony\_state}}
+\doxysubsubsection{\texorpdfstring{ve\_list}{ve\_list}}
+{\footnotesize\ttfamily \label{structharmony__state_a195372f5f5ba8da0ba581eadac32b2e5} 
+int harmony\+\_\+state\+::ve\+\_\+list\mbox{[}84\mbox{]}}
+
+List of associated VE values for each KPDVE encoding. 
+
+The documentation for this struct was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+include/harmony\+\_\+state.\+h\end{DoxyCompactItemize}

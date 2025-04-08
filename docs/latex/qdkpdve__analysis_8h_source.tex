@@ -1,0 +1,58 @@
+\doxysection{qdkpdve\+\_\+analysis.\+h}
+\hypertarget{qdkpdve__analysis_8h_source}{}\label{qdkpdve__analysis_8h_source}\index{include/qdkpdve\_analysis.h@{include/qdkpdve\_analysis.h}}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ \textcolor{comment}{//}}
+\DoxyCodeLine{00002\ \textcolor{comment}{//\ \ qdkpdve\_analysis.h}}
+\DoxyCodeLine{00003\ \textcolor{comment}{//\ \ pitchflock}}
+\DoxyCodeLine{00004\ \textcolor{comment}{//}}
+\DoxyCodeLine{00005\ \textcolor{comment}{//\ \ Created\ by\ Tim\ Summers\ on\ 6/12/23.}}
+\DoxyCodeLine{00006\ \textcolor{comment}{//}}
+\DoxyCodeLine{00007\ \textcolor{comment}{//}}
+\DoxyCodeLine{00008\ \textcolor{comment}{//}}
+\DoxyCodeLine{00009\ }
+\DoxyCodeLine{00010\ \textcolor{preprocessor}{\#ifndef\ qdkpdve\_analysis\_h}}
+\DoxyCodeLine{00011\ \textcolor{preprocessor}{\#define\ qdkpdve\_analysis\_h}}
+\DoxyCodeLine{00012\ }
+\DoxyCodeLine{00013\ \textcolor{preprocessor}{\#include\ <stdio.h>}}
+\DoxyCodeLine{00014\ \textcolor{preprocessor}{\#include\ "{}qdkpdve.h"{}}}
+\DoxyCodeLine{00015\ }
+\DoxyCodeLine{00016\ \textcolor{keyword}{struct\ }\mbox{\hyperlink{structve__value}{ve\_value}}}
+\DoxyCodeLine{00017\ \ \{}
+\DoxyCodeLine{00018\ \ \ \ \ \ \textcolor{keywordtype}{int}\ bin\_val;\ \textcolor{comment}{//\ seven\ bits,\ with\ bits\ to\ be\ adjusted\ rightward\ (lowest\ possible\ value)}}
+\DoxyCodeLine{00019\ \ \ \ \ \ \textcolor{keywordtype}{int}\ v;}
+\DoxyCodeLine{00020\ \ \ \ \ \ \textcolor{keywordtype}{int}\ e;}
+\DoxyCodeLine{00021\ \ \};}
+\DoxyCodeLine{00022\ }
+\DoxyCodeLine{00023\ \textcolor{keyword}{struct\ \ }\mbox{\hyperlink{structdve__value}{dve\_value}}}
+\DoxyCodeLine{00024\ \ \{\ \textcolor{comment}{//\ seven\ bits,\ as\ above,\ but\ rotated\ for\ d}}
+\DoxyCodeLine{00025\ \ \ \ \ \ \textcolor{keywordtype}{int}\ bin\_val;}
+\DoxyCodeLine{00026\ \ \ \ \ \ \textcolor{keywordtype}{int}\ d;}
+\DoxyCodeLine{00027\ \ \ \ \ \ \textcolor{keyword}{struct\ }\mbox{\hyperlink{structve__value}{ve\_value}}\ ve\_val;}
+\DoxyCodeLine{00028\ \ \};}
+\DoxyCodeLine{00029\ }
+\DoxyCodeLine{00030\ \textcolor{keyword}{struct\ }\mbox{\hyperlink{structkpdve__value}{kpdve\_value}}}
+\DoxyCodeLine{00031\ \ \{}
+\DoxyCodeLine{00032\ \ \ \ \ \ \textcolor{keywordtype}{int}\ bin\_val;}
+\DoxyCodeLine{00033\ \ \ \ \ \ \textcolor{keywordtype}{int}\ k;}
+\DoxyCodeLine{00034\ \ \ \ \ \ \textcolor{keywordtype}{int}\ p;}
+\DoxyCodeLine{00035\ \ \ \ \ \ \textcolor{keyword}{struct\ }\mbox{\hyperlink{structdve__value}{dve\_value}}\ dve\_val;}
+\DoxyCodeLine{00036\ \ \};}
+\DoxyCodeLine{00037\ }
+\DoxyCodeLine{00038\ \textcolor{keywordtype}{int}\ largest\_bit(\textcolor{keywordtype}{int}\ aUInt);}
+\DoxyCodeLine{00039\ \textcolor{comment}{//\ hmmm.\ the\ 'breadth\ is\ unused...}}
+\DoxyCodeLine{00040\ \textcolor{keywordtype}{int}\ shuffle\_bits(\textcolor{keywordtype}{int}\ ve\_val,\ \textcolor{keywordtype}{int}\ breadth);}
+\DoxyCodeLine{00041\ \textcolor{comment}{//\ DOES\ THIS\ WORK?\ SHOULD\ IF\ BREADTH\ =\ 7\ //\ COULD\ BE\ USEFUL\ FOR\ NEGATIVE\ V\ VALUES...}}
+\DoxyCodeLine{00042\ \textcolor{keywordtype}{int}\ unshuffle\_bits(\textcolor{keywordtype}{int}\ ve\_val,\ \textcolor{keywordtype}{int}\ breadth);}
+\DoxyCodeLine{00043\ }
+\DoxyCodeLine{00044\ \textcolor{comment}{//\ manufacture\ VE\ and\ DVE\ structs}}
+\DoxyCodeLine{00045\ \textcolor{keyword}{struct\ }\mbox{\hyperlink{structve__value}{ve\_value}}\ make\_ve(int\ input\_val);}
+\DoxyCodeLine{00046\ \textcolor{keyword}{struct\ }\mbox{\hyperlink{structdve__value}{dve\_value}}\ make\_dve(int\ input\_val);}
+\DoxyCodeLine{00047\ \textcolor{keyword}{struct\ }\mbox{\hyperlink{structkpdve__value}{kpdve\_value}}\ make\_kpdve(int\ input\_val);}
+\DoxyCodeLine{00048\ }
+\DoxyCodeLine{00049\ \textcolor{keyword}{struct\ }\mbox{\hyperlink{structve__value}{ve\_value}}\ minimize\_ve\_value(struct\ \mbox{\hyperlink{structve__value}{ve\_value}}\ ve\_val);}
+\DoxyCodeLine{00050\ \textcolor{keyword}{struct\ }\mbox{\hyperlink{structdve__value}{dve\_value}}\ minimize\_dve\_value(struct\ \mbox{\hyperlink{structdve__value}{dve\_value}}\ dve\_val);}
+\DoxyCodeLine{00051\ }
+\DoxyCodeLine{00052\ \textcolor{preprocessor}{\#endif\ }\textcolor{comment}{/*\ qdkpdve\_analysis\_h\ */}\textcolor{preprocessor}{}}
+
+\end{DoxyCode}
