@@ -43,10 +43,6 @@ The net result is that consonance is a function of bit entropy. The fundamental 
    ```bash
    npm install
    ```
-4. Start the development server:
-   ```bash
-   npm start
-   ```
 
 ## Usage
 1.
