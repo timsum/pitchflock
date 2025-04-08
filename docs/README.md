@@ -1,5 +1,8 @@
 # PitchFlock
 
+[![License](https://img.shields.io/badge/license-MIT-blue.svg)](../LICENSE)
+[![Version](https://img.shields.io/badge/version-1.0.0-blue.svg)](#)
+
 ## Project Title
 PitchFlock - An algorithm for analyzing harmony from chroma input. Naive, but fluid.
 
@@ -103,4 +106,4 @@ This project is licensed under the MIT License. See the `LICENSE` file for detai
 ## Contact
 For questions or feedback, please contact:
 - Email: timsummers@mac.com
-- GitHub: [yourusername](https://github.com/timsum)
+- GitHub: [timsum]
