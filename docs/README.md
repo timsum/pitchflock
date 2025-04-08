@@ -36,7 +36,7 @@ The net result is that consonance is a function of bit entropy. The fundamental 
 ## Installation
 1. Clone the repository:
    ```bash
-   git clone https://github.com/yourusername/pitchflock.git
+   git clone https://github.com/timsum/pitchflock.git
    ```
 2. Navigate to the project directory:
    ```bash
