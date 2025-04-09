@@ -7,14 +7,17 @@
 #include "../include/qdkpdve_naming.h"
 
 #define BIGLOOP 120
+#define CM 0b10010001
 #define C7 0b10010010001
 #define CM7 0b100010010001
 
 /**
- * @brief Demonstrates a sequence of major triads modulating up by half steps.
+ * @brief Makes a colored binary representation of a number.
  *
- * This function iterates through a series of chromatic modulations, updating
- * the harmony state and printing its properties at each step.
+ * This function prints the binary representation of a given integer value with green ones.
+ * 
+ * @param value The integer value to be printed in binary.
+ * @param bits The number of bits to represent the value.
  */
 
  void print_colored_binary(int value, int bits)
@@ -34,8 +37,16 @@
     }
 }
 
- // This function prints a summary of the analysis of a harmony_state structure.
-// It displays the encoded state, chromatic notes, KPDVE representation, and the circle scale derived from KPDVE.
+/**         
+ * @brief Prints a summary of the analysis of a harmony_state structure.
+ *  
+ * This function displays the encoded state, chromatic notes, KPDVE representation,             
+ * 
+ * the circle scale derived from KPDVE, and other properties of the harmony state.
+ * 
+ * @param state Pointer to the harmony_state structure to analyze.
+ */
+
 void printAnalysisSummary(harmony_state *state)
 {
         // Print the binary representation of the encoded state in 32 bits, with colored formatting.
@@ -79,7 +90,7 @@ void majorTriadSequenceModulatingUp()
 
     for (int i = 0; i < 12; i++)
     {
-        adjust_harmony_state_from_chroma_and_context(&default_state, mod_rot(C7, i, 12), context);
+        adjust_harmony_state_from_chroma_and_context(&default_state, mod_rot(CM, i, 12), context);
 
         // Print the values of the harmony_state struct
         printAnalysisSummary(&default_state);
@@ -103,7 +114,7 @@ void majorTriadSequenceModulatingUpFifths()
 
     for (int i = 0; i <= 12; i++)
     {
-        adjust_harmony_state_from_chroma_and_context(&default_state, mod_rot(C7, (i * 7) % 12, 12), context);
+        adjust_harmony_state_from_chroma_and_context(&default_state, mod_rot(CM, (i * 7) % 12, 12), context);
 
         // Print the values of the harmony_state struct
         printAnalysisSummary(&default_state);
@@ -123,11 +134,11 @@ void majorTriadSequenceModulatingDown()
     printf("Major triad modulating down by half step\n");
     printf("~~~~k___p__d__v__e__B-A-G-FE-D-C bb###BEADGCF\n");
     int context = 0;
-    harmony_state default_state = harmony_state_from_binary_w_context(C7, 35);
+    harmony_state default_state = harmony_state_from_binary_w_context(CM, 35);
 
     for (int i = 0; i < 12; i++)
     {
-        adjust_harmony_state_from_chroma_and_context(&default_state, mod_rot(C7, -i, 12), context);
+        adjust_harmony_state_from_chroma_and_context(&default_state, mod_rot(CM, -i, 12), context);
 
         // Print the values of the harmony_state struct
         printAnalysisSummary(&default_state);
@@ -147,11 +158,11 @@ void majorTriadSequenceModulatingDownFifths()
     printf("Major triad modulating down by fifths\n");
     printf("~~~~k___p__d__v__e__B-A-G-FE-D-C bb###BEADGCF\n");
     int context = 0;
-    harmony_state default_state = harmony_state_from_binary_w_context(C7, 35);
+    harmony_state default_state = harmony_state_from_binary_w_context(CM, 35);
 
     for (int i = 0; i <= 12; i++)
     {
-        adjust_harmony_state_from_chroma_and_context(&default_state, mod_rot(C7, -(i * 7) % 12, 12), context);
+        adjust_harmony_state_from_chroma_and_context(&default_state, mod_rot(CM, -(i * 7) % 12, 12), context);
 
         // Print the values of the harmony_state struct
         printAnalysisSummary(&default_state);

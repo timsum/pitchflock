@@ -30,10 +30,10 @@ static int kpdve_mods[] = {12, 7, 7, 7, 7};
 // they are used to weight the distance function, so that some parameters are more important than others.
 // they would require some more investigation to determine the best values for different circumstances.
 
-// biases toward axes (used for P, mainly... to tend away from entropic patterns
+// biases toward axes (used for P, mainly... to tend away from entropic patterns -- NOT IMPLEMENTED
 static float kpdve_axis_biases[] = {1.0, 1.0, 1.0, 1.0, 1.0};
 // dilates the axis so distances are greater for key and pattern (harder to change) than for degree.
-static float kpdve_axis_scale[] = {1.0, 1.0, 1.0, 1.0, 1.0};
+static float kpdve_axis_scale[] = {1.02, 1.01, 1.0, 1.0, 1.0};
 
 /**
  * @brief Reduces an input value by applying modular rotation and compression.
@@ -132,6 +132,9 @@ float modDistance(int val1, int val2, int mod)
 /**
  * @brief Calculates a biased modular distance between two values.
  *
+ * This is not currently used. It may be used to bias the distance toward lower p values...
+ * but this would mean that the p value would have to be re-centered to 0 which is rather fiddly.
+ * 
  * @param val1 The first value.
  * @param val2 The second value.
  * @param mod The modulus for the calculation.
@@ -172,7 +175,7 @@ double KPD_distance(int kpdve_1, int kpdve_2)
     {
         dist = modDistance(temp1[i], temp2[i], kpdve_mods[i]);
 //        dist = biasedModDistance(temp1[i], temp2[i], kpdve_mods[i], kpdve_axis_biases[i]);
-//        dist *= kpdve_axis_scale[i]; // scales distance for param priorities
+        dist *= kpdve_axis_scale[i]; // scales distance for param priorities
 //        innerSum += dist * dist;
         innerSum += dist;
     }
