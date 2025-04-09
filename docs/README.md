@@ -18,13 +18,15 @@ PitchFlock - An algorithm for analyzing harmony from chroma input. Naive, but fl
 9. [Contact](#contact)
 
 ## Introduction
-PitchFlock is in most ways a standard Mod12 chroma-based algorithm for analyzing harmonic relationships in audio signals. It is unique in that it relies on regular subdivisions of prime-numbered groups of bits to maintain longer-term memory of key area. This allows for flipped bits and non-harmonic tones to occur without disrupting the core orientation.
+PitchFlock is in most ways a standard Mod12 chroma-based algorithm for analyzing harmonic relationships. It can be useful for parametrically navigating harmony or for analyzing audio signals. It is unique in that it relies on regular subdivisions of prime-numbered groups of bits to maintain longer-term memory of key area. This allows for flipped bits and non-harmonic tones to occur without disrupting the core orientation.
 
-At its center is a struct called 'harmony_state' which contains two types of information, as two integers: five values representing Key, Pattern, Degree, Voicing, and Extensions encoded as a single int (KKKKPPPDDDVVVEEE), and a chroma representation of the notes (backwards, like a piano in Hebrew: B-A-G-FE-D-C, where the hyphens are 'black keys'), also a single int.
+At its center is a struct called 'harmony_state' which contains two types of information, stored as two integers: five values representing Key, Pattern, Degree, Voicing, and Extensions encoded as a single int. 1) (KKKKPPPDDDVVVEEE), where K,P,D,V, and E have maximum values of 12, 7, 7, 7, and 7, respectively; 2)  a chroma representation of the notes (backwards, like a piano in Hebrew: b-a-g-fe-d-c, where the hyphens are 'black keys'). It uses 12 bits of a single int.
 
 Either of these can be input: either the notes yield an analysis in terms of functional harmony, or the functional harmony yields the chord it names.
 
-While a single KPDVE value will yield a single chord, a single chord or note can play manyharmonic roles. So the KPDVE output is almost always multiple, and the system must settle upon the most likely solution (closest in a 12x7x7 modular KPD space).  This 'answer, however, is not definitive, a 'KPDVE list' contains all alternate answers. To take a simple example: a C major chord can be I of C major or V of F major. At any moment it could *also* be the other. The simplest version of this algorithm simply finds the element of the list closest to the previous value, so it proceeds more or less like a markov chain.
+While a single KPDVE value will yield a single chord, a single chord or note can play many harmonic roles. So the KPDVE output is almost always multiple (a 'kpdve_list'), and the system must settle upon the most likely solution (closest to the previous solution in a 12x7x7 modular KPD space).  This 'answer, however, is not definitive, a 'KPDVE list' contains all alternate answers. To take a simple example: a C major chord can be I of C major or V of F major. At any moment it could *also* be the other. The simplest version of this algorithm simply finds the element of the list closest to the previous value, so it proceeds more or less like a markov chain.
+
+For efficiency, the solution can be combined into a 32-bit 'encoded_state' x---KKKKPPPDDDVVVEEEb-a-g-fe-d-c.  The leftmost bit is a 1 the state is non-haromnic, in which case the harmony state will not change, because it cannot establish sufficient consonance.
 
 The net result is that consonance is a function of bit entropy. The fundamental technique is to treat bits as powers of three rather than powers of two. This yields a kind of information harmony.
 
@@ -51,7 +53,9 @@ The net result is that consonance is a function of bit entropy. The fundamental 
    ./build/test_harmony_state_default;
    ```
 ## Usage
-1. The program will serve as a kernel for both music analysis and generation. Inputs can be parametric (Key, Pattern, Degree, Voicing, Extension), or Chroma. I will use it for harmony-responsive music visualization.
+1. The program will serve as a kernel for both music analysis and generation. Inputs can be parametric (Key, Pattern, Degree, Voicing, Extension), or Chroma.  The 'solution' consists in joining the two.
+
+I will use it for harmony-responsive music visualization.
 
 ## Project Structure
 - **include/**: Contains header files for core functionality, such as harmony analysis, state management, and naming conventions.
@@ -62,8 +66,8 @@ The net result is that consonance is a function of bit entropy. The fundamental 
 - **Harmony State Management**: (`harmony_state.h`) Defines the structure and logic for managing harmony states.
 - **Harmony Crystal**: (`qdkpdve_harmonycrystal.h`) Provides tools for analyzing harmonic patterns using twin-prime-numbered sets of bits (e.g. 7 and 5)
 - **KPDVE Analysis**: (`qdkpdve_analysis.h`) Implements algorithms for analyzing and minimizing harmonic values.
-- **Naming Conventions**: (`qdkpdve_naming.h`) Maps harmonic values to musical names and patterns.
-- **State Maker**: (`qdkpdve_statemaker.h`) Handles the creation and adjustment of harmony states.
+- **Naming Conventions**: (`qdkpdve_naming.h`) Maps harmonic values to a set of conventional musical names and patterns.
+- **State Maker**: (`qdkpdve_statemaker.h`) Handles the creation and adjustment of harmony states. Most analysis takes place here.
 
 ## Building the Project
 To build the library and test programs, run:

@@ -18,35 +18,35 @@ char* noteStrings[] = {
 
 // Conventional names of patterns 1 bit removed from Lydian (0)
 char* basePatternConventionalNames[] = {
-    "Tonic Major",
-    "Dominant Major",
-    "Melodic Minor",
-    "Harmonic Minor",
-    "Harmonic Major",
-    "Parallel Minor",
+    "Tonic Major      ",
+    "Dominant Major   ",
+    "Melodic Minor    ",
+    "Harmonic Minor   ",
+    "Harmonic Major   ",
+    "Parallel Minor   ",
     "Subdominant Major"
 };
 
 // Short names of patterns 1 bit removed from Lydian (0)
 char* basePatternConventionalNamesShort[] = {
     "M (tonic)",
-    "M (dom)",
-    "m/mel",
-    "m/harm",
-    "M/harm",
-    "m/para",
-    "M (subd)"
+    "M (dom)  ",
+    "m/mel    ",
+    "m/harm   ",
+    "M/harm   ",
+    "m/para   ",
+    "M (subd) "
 };
 
 // Conventional mode names of patterns starting from different degrees of Lydian scale
 char* modeNamesMatrix[] = {
-    "Lydian",
-    "Ionian",
+    "Lydian    ",
+    "Ionian    ",
     "Mixolydian",
-    "Dorian",
-    "Aeolian",
-    "Phrygian",
-    "Locrian"
+    "Dorian    ",
+    "Aeolian   ",
+    "Phrygian  ",
+    "Locrian   "
 };
 
 // Alterations of the Lydian scale in the base patterns
@@ -62,11 +62,11 @@ char* patternDistortionsMatrix[] = {
 
 // Chord degrees within a pattern (could later be dynamically capitalized for Chord quality)
 char* modeNumbersMatrix[] = {
-    "IV",
-    "I",
-    "V",
-    "II",
-    "VI",
+    "IV ",
+    "I  ",
+    "V  ",
+    "II ",
+    "VI ",
     "III",
     "VII"
 };
