@@ -26,7 +26,7 @@ Either of these can be input: either the notes yield an analysis in terms of fun
 
 While a single KPDVE value will yield a single chord, a single chord or note can play many harmonic roles. So the KPDVE output is almost always multiple (a 'kpdve_list'), and the system must settle upon the most likely solution (closest to the previous solution in a 12x7x7 modular KPD space).  This 'answer, however, is not definitive, a 'KPDVE list' contains all alternate answers. To take a simple example: a C major chord can be I of C major or V of F major. At any moment it could *also* be the other. The simplest version of this algorithm simply finds the element of the list closest to the previous value, so it proceeds more or less like a markov chain.
 
-For efficiency, the solution can be combined into a 32-bit 'encoded_state' x---KKKKPPPDDDVVVEEEb-a-g-fe-d-c.  The leftmost bit is a 1 the state is non-haromnic, in which case the harmony state will not change, because it cannot establish sufficient consonance.
+For efficiency, the solution can be combined into a 32-bit 'encoded_state' x---KKKKPPPDDDVVVEEEb-a-g-fe-d-c.  The leftmost bit is a 1 the state is non-harmonic, in which case the harmony state will not change, because it cannot establish sufficient consonance.
 
 The net result is that consonance is a function of bit entropy. The fundamental technique is to treat bits as powers of three rather than powers of two. This yields a kind of information harmony.
 
@@ -80,9 +80,8 @@ To build and run the test programs:
 ```bash
 make tests
 ./build/test_harmony_state_default
-
-Generates analyses of: 1) all possible chroma inputs (4096) 2) all possible KPDVE inputs (28812)3) a stream of 200 random numbers
 ```
+Generates analyses of: 1) all possible chroma inputs (4096) 2) all possible KPDVE inputs (28812)3) a stream of 200 random numbers
 
 ## Cleaning Up
 To clean up build artifacts:
@@ -92,20 +91,30 @@ make clean
 
 ## Contributing
 We welcome contributions! Please follow these steps:
-1. Fork the repository.
-2. Create a new branch:
+1. Fork the repository:
+   ```bash
+   # Open the repository on GitHub and click the "Fork" button in the top-right corner.
+   ```
+2. Clone your forked repository:
+   ```bash
+   git clone https://github.com/<your-username>/pitchflock.git
+   ```
+3. Create a new branch:
    ```bash
    git checkout -b feature-name
    ```
-3. Commit your changes:
+4. Commit your changes:
    ```bash
    git commit -m "Add feature-name"
    ```
-4. Push to your branch:
+5. Push to your branch:
    ```bash
    git push origin feature-name
    ```
-5. Open a pull request.
+6. Open a pull request:
+   - Go to your forked repository on GitHub.
+   - Click the "Pull Request" tab and then "New Pull Request."
+   - Select the base repository and branch, and submit your pull request.
 
 ## License
 This project is licensed under the MIT License. See the `LICENSE` file for details.
