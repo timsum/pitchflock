@@ -1,10 +1,10 @@
-# PitchFlock
+# pitchflock
 
 [![License](https://img.shields.io/badge/license-MIT-blue.svg)](../LICENSE)
 [![Version](https://img.shields.io/badge/version-1.0.0-blue.svg)](#)
 
 ## Project Title
-PitchFlock - An algorithm for analyzing harmony from chroma input. Naive, but fluid.
+pitchflock - An algorithm for analyzing harmony from chroma input. Naive, but fluid.
 
 ## Table of Contents
 1. [Introduction](#introduction)
@@ -18,7 +18,7 @@ PitchFlock - An algorithm for analyzing harmony from chroma input. Naive, but fl
 9. [Contact](#contact)
 
 ## Introduction
-PitchFlock is in most ways a standard Mod12 chroma-based algorithm for analyzing harmonic relationships. It can be useful for parametrically navigating harmony or for analyzing audio signals. It is unique in that it relies on regular subdivisions of prime-numbered groups of bits to maintain longer-term memory of key area. This allows for flipped bits and non-harmonic tones to occur without disrupting the core orientation.
+*pitchflock* is in most ways a standard Mod12 chroma-based algorithm for analyzing harmonic relationships. It can be useful for parametrically navigating harmony or for analyzing audio signals. It is unique in that it relies on regular subdivisions of prime-numbered groups of bits to maintain longer-term memory of key area. This allows for flipped bits and non-harmonic tones to occur without disrupting the core orientation.
 
 At its center is a struct called 'harmony_state' which contains two types of information, stored as two integers: five values representing Key, Pattern, Degree, Voicing, and Extensions encoded as a single int. 1) (KKKKPPPDDDVVVEEE), where K,P,D,V, and E have maximum values of 12, 7, 7, 7, and 7, respectively; 2)  a chroma representation of the notes (backwards, like a piano in Hebrew: b-a-g-fe-d-c, where the hyphens are 'black keys'). It uses 12 bits of a single int.
 
