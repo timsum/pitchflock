@@ -75,7 +75,7 @@ void majorTriadSequenceModulatingUp()
     printf("Major triad modulating up by half step\n");
     printf("~~~~k___p__d__v__e__B-A-G-FE-D-C bb###BEADGCF\n");
     int context = 0;
-    harmony_state default_state = harmony_state_from_binary_w_context(C7, 35);
+    harmony_state default_state = harmony_state_default();
 
     for (int i = 0; i < 12; i++)
     {
@@ -99,7 +99,7 @@ void majorTriadSequenceModulatingUpFifths()
     printf("Major triad modulating up by fifths\n");
     printf("~~~~k___p__d__v__e__B-A-G-FE-D-C bb###BEADGCF\n");
     int context = 0;
-    harmony_state default_state = harmony_state_from_binary_w_context(C7, 35);
+    harmony_state default_state = harmony_state_default();
 
     for (int i = 0; i <= 12; i++)
     {
@@ -286,10 +286,12 @@ int main()
     //majorTriadSequenceModulatingUp();
     //majorTriadSequenceModulatingUpFifths();
     //majorTriadSequenceModulatingDown();
-    //majorTriadSequenceModulatingDownFifths();
     scrollBinaryValues();
     scrollKPDEvalues();
     continuous_binary_test();
-
+    majorTriadSequenceModulatingDownFifths();
+    majorTriadSequenceModulatingDown();
+    majorTriadSequenceModulatingUpFifths();
+    majorTriadSequenceModulatingUp();
     return 0;
 }

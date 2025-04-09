@@ -170,12 +170,14 @@ double KPD_distance(int kpdve_1, int kpdve_2)
     
     for (int i = 0; i < 3; i++)
     {
-        dist = biasedModDistance(temp1[i], temp2[i], kpdve_mods[i], kpdve_axis_biases[i]);
-        dist *= kpdve_axis_scale[i]; // scales distance for param priorities
-        innerSum += dist * dist;
+        dist = modDistance(temp1[i], temp2[i], kpdve_mods[i]);
+//        dist = biasedModDistance(temp1[i], temp2[i], kpdve_mods[i], kpdve_axis_biases[i]);
+//        dist *= kpdve_axis_scale[i]; // scales distance for param priorities
+//        innerSum += dist * dist;
+        innerSum += dist;
     }
-    
-    return sqrt(innerSum);
+    return innerSum;  
+//    return sqrt(innerSum);
 }
 
 /**
