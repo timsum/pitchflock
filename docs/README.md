@@ -26,12 +26,12 @@ Either of these can be input: either the notes yield an analysis in terms of fun
 
 While a single KPDVE value will yield a single chord, a single chord or note can play many harmonic roles. So the KPDVE output is almost always multiple (a 'kpdve_list'), and the system must settle upon the most likely solution (closest to the previous solution in a 12x7x7 modular KPD space).  This 'answer, however, is not definitive: a 'KPDVE list' contains all alternate answers. To take a simple example: a C major chord can be I of C major or V of F major. At any moment it could any one of 18 solutions. The simplest version of this algorithm simply finds the element of the list closest to the previous value, so it proceeds more or less like a markov chain.
 
-For efficiency, the solution can be combined into a 32-bit 'encoded_state' x---KKKKPPPDDDVVVEEEb-a-g-fe-d-c.  The leftmost bit is a 1 the state is non-harmonic, in which case the harmony state will not change, because it cannot establish sufficient consonance.
+For efficiency, the notes and their complete analysis can be combined into a 32-bit 'encoded_state' x---KKKKPPPDDDVVVEEEb-a-g-fe-d-c.  The leftmost bit is a 1 if the state is non-harmonic.  In this case the harmony state will not change, because it cannot establish sufficient consonance. 
 
 The net result is that consonance is a function of bit entropy. The fundamental technique is to treat bits as powers of three rather than powers of two. This yields a kind of information harmony.
 
 ## Features
-- The algorithm is extraordinarily low-latency, and can function fluidly for live audio; it also can react to live-input discrete KPDVE values, for music composition; since it operates like a very tiny neural network tuned for harmony, and because maintains memory ('attention') in its K and P values, it may offer a stabilizing force in artificial intelligence audio applications. 
+- The algorithm is extraordinarily low-latency, and can function fluidly for live audio; it also can react to live-input discrete KPDVE values, for music composition; since it operates like a very tiny neural network tuned for harmony, and because it maintains memory ('attention') in its K and P values, it may offer a stabilizing force in artificial intelligence audio applications. 
 
 Maybe. 
 
@@ -84,6 +84,8 @@ make tests
 ./build/test_harmony_state_default
 ```
 Generates analyses of: 1) all possible chroma inputs (4096) 2) all possible KPDVE inputs (28812)3) a stream of 200 random numbers
+
+In the functions of 'test_harmony_state_default.c', you can see some examples of how information is retrieved from the harmony state, and how to create and adjust harmony_state structs.
 
 ## Cleaning Up
 To clean up build artifacts:
