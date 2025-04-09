@@ -81,7 +81,7 @@ To build and run the test programs:
 make tests
 ./build/test_harmony_state_default
 
-Generates a stream of random numbers to test the analysis capacities using chroma (chroma are here entered Right to Left, like hebrew: b a g fe d c)
+Generates analyses of: 1) all possible chroma inputs (4096) 2) all possible KPDVE inputs (28812)3) a stream of 200 random numbers
 ```
 
 ## Cleaning Up
