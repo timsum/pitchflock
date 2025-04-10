@@ -518,7 +518,7 @@ const char* patternDistortionForKPDVE(int kpdve)
     int result[5];
     binaryEncodingToKPDVE(kpdve, result);
 
-    return patternDistortionsMatrix[result[2]]; // Return a pointer to a string literal
+    return patternDistortionsMatrix[result[1]]; // Return a pointer to a string literal
 }
 
 /**
