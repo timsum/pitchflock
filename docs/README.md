@@ -40,7 +40,7 @@ The net result is that consonance and harmonic direction become functions of bit
 ## Features
 - The algorithm is extraordinarily low-latency, and can function fluidly for live audio; it also can react to live-input discrete KPDVE values, for music composition; since it operates like a very tiny neural network tuned for harmony, and because it maintains memory ('attention') in its K and P values, it may offer a stabilizing force in artificial intelligence audio applications. 
 
-Maybe. 
+- Maybe
 
 - In this scheme, the harmonic analysis creates a kind of dynamic tokenization, in which the name (a binary representation of pitches and function) is not absolute in its determination, but still remains centered on a meaningful musical memory and prediction area.
 
