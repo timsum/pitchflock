@@ -62,7 +62,9 @@ The net result is that consonance and harmonic direction become functions of bit
    ./build/test_harmony_state_default;
    ```
 ## Usage
-1. The program will serve as a kernel for both music analysis and generation. Inputs can be parametric (Key, Pattern, Degree, Voicing, Extension), or Chroma.  The 'solution' consists in joining the two.
+The program will serve as a kernel for both music analysis and generation. Inputs can be parametric (Key, Pattern, Degree, Voicing, Extension), or Chroma.  The 'solution' consists in joining the two.
+
+It should open a path for guiding prediction patterns in generated music. The KPDVE parameters are flexible and allow for gestural, open-ended embellishments over stable harmonic anchors.
 
 I will use it for harmony-responsive music visualization.
 
