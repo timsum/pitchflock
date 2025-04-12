@@ -59,6 +59,7 @@ void printAnalysisSummary(harmony_state *state)
 
         // Print the binary representation of the circle scale derived from KPDVE in 12 bits, with colored formatting.
         print_colored_binary(circle_scale_from_kpdve(state->kpdve), 12);
+        print_colored_binary(circle_scale_from_kpdve(state->kpdve), 12); // a second one so you can see the swirl
         printf(" ");
 
         // print the DVE and VE (D reduced to rightmost) values in 7 bits each, with colored formatting.
@@ -261,7 +262,7 @@ void continuous_binary_test()
     int bits_set = 0;
     int chordMax = 3;
 
-    while (totalStates < 200) // or Infinite loop for continuous testing
+    while (totalStates < 2000) // or Infinite loop for continuous testing
     {
         // Generate a random 12-bit number with up to 5 bits set to 1
         random_number = 0;
