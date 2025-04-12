@@ -24,13 +24,16 @@ At its center is a struct called 'harmony_state' which contains two types of inf
 
 For efficiency, the notes and their complete analysis can be combined into a 32-bit 'encoded_state', which contains the complete analysis:
 
-x---KKKKPPPDDDVVVEEEb-a-g-fe-d-c.  
+```bash
+x---KKKKPPPDDDVVVEEEb-a-g-fe-d-c 
+00001011110110100010010010001000
+```
 
 The leftmost bit (x) is a 1 if the state is non-harmonic (in this case the harmony state will not change its analysis, because it cannot establish sufficient consonance to change the listener's orientation). The other three bits (---) are empty, but may come into use. For now it is convenient to package a chord and its analysis in a single 32-bit integer.
 
 *Either* KPDVE information or chroma information can serve as input. The chroma input yield an analysis in terms of functional harmony; the functional harmony yields the exact chord it names.
 
-However, while a single KPDVE (functional harmony) value will yield a single chord, a single chord or note can play many harmonic roles. So the KPDVE output is almost always multiple, and the system must settle upon the most likely solution (chosen from a 'kpdve_list' as closest to the previous solution in a 12x7x7 modular KPD space).  So an 'answer' is by definition not definitive: a 'KPDVE list' contains all possible chord functions, some of which might prove more correct in retrospect than the original best choice. To take a simple example: a C major chord can be I of C major or V of F major. At any moment a major triad could play any one of 18 possible functions, and if it turns out to have resolved to F7, then it will in retrospect turn out to have been V/V in Bb The simplest version of this algorithm simply finds the element of the list closest to the previous value in KPD-space, so it proceeds more or less like a markov chain. Further iterations may incorporate harmonic hindsight.
+However, while a single KPDVE (functional harmony) value will yield a single chord, a single chord or note can play many harmonic roles. So the KPDVE output is almost always multiple, and the system must settle upon the most likely solution (chosen from a 'kpdve_list' by proximity to the previous solution in a 12x7x7 modular KPD space).  So an 'answer' is by definition not definitive: a 'KPDVE list' contains all possible chord functions, some of which might prove more correct in retrospect than the original best choice. To take a simple example: a C major chord can be I of C major or V of F major. At any moment a major triad could play any one of 18 possible functions, and if it turns out to have resolved to F7, then it will in retrospect turn out to have been V/V in Bb The simplest version of this algorithm simply finds the element of the list closest to the previous value in KPD-space, so it proceeds more or less like a markov chain. Further iterations may incorporate harmonic hindsight.
 
 The net result is that consonance and harmonic direction become functions of bit entropy. The fundamental technique is to treat bits as powers of three rather than powers of two. This yields a kind of information harmony.
 
