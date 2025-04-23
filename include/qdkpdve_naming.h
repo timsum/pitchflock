@@ -40,11 +40,14 @@ int nameIndexForKPDVE(int kpdve);
 
 const char* nameStringForKPDVE(int kpdve);
 const char* nameStringAtIndex(int index);
+double noteRatioAtIndex(int index);
 const char* lydBaseForKPDVE(int kpdve);
 const char* majBaseForKPDVE(int kpdve);
 const char* rootStringForKPDVE(int kpdve);
 const char* conventionalTonicStringForKPDVE(int kpdve);
 const char* conventionalDegreeStringForKPDVE(int kpdve);
+
+double freqRatioForKPDVE(int kpdve);
 
 // fill in the string buffer with the chord notes for a given KPDVE
 void chordNotesStringForKPDVE(int kpdve, char*stringBuf, size_t bufSize);

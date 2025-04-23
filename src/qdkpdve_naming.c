@@ -5,7 +5,7 @@
 //  Created by Tim Summers on 6/12/23.
 //
 
-#include "../include/qdkpdve_naming.h"
+#include "qdkpdve_naming.h"
 
 // Three rounds of modular rotation -- could be a dynamic function in the future...
 char* noteStrings[] = {
@@ -15,6 +15,14 @@ char* noteStrings[] = {
     "F#", "C#", "G#", "D#", "A#", "E#", "B#",
     "Fx", "Cx", "Gx", "Dx", "Ax", "Ex", "Bx"
 };
+
+// Three rounds of corresponding ratios in pure 3/2, octave reduced -- could also be a dynamic function in the future... correspondingly.
+// basically, the above is a notation for this...
+double noteRatios[] = { 1.1692330293868376, 1.7538495440802564, 1.3153871580601924, 1.9730807370902885, 1.4798105528177163, 1.1098579146132872, 1.6647868719199308,
+    1.2485901539399482, 1.8728852309099222, 1.4046639231824416, 1.0534979423868314, 1.5802469135802468, 1.1851851851851851, 1.7777777777777777,
+    1.3333333333333333, 1.0, 1.5, 1.125, 1.6875, 1.265625, 1.8984375, 1.423828125,
+    1.06787109375, 1.601806640625, 1.20135498046875, 1.802032470703125, 1.3515243530273438, 1.0136432647705078,
+    1.5204648971557617, 1.1403486728668213, 1.710523009300232, 1.282892256975174, 1.924338385462761, 1.4432537890970707, 1.082440341822803};
 
 // Conventional names of patterns 1 bit removed from Lydian (0)
 char* basePatternConventionalNames[] = {
@@ -245,7 +253,21 @@ const char* nameStringForKPDVE(int kpdve)
     return noteStrings[nameIndexForKPDVE(kpdve)];
 }
 
-// FIXME: This function is basically redundant, but might be further implemented for access safety
+/**
+ * @brief Returns the frequency ratio (from a C with a value of 1.0)  of the note at the end of the KPDVE encoding (the last extension).
+ *
+ * @param kpdve The KPDVE value.
+ * @return double A calculated ratio from 1.0 up to (not including)  2.0
+ */
+double freqRatioForKPDVE(int kpdve)
+{
+    int result[5];
+    binaryEncodingToKPDVE(kpdve, result);
+    
+    return noteRatios[nameIndexForKPDVE(kpdve)];
+}
+
+// FIXME: This function is completely redundant, but might be further implemented (for array access safety, especially)
 /**
  * @brief Returns the name of a note at a given index.
  * 
@@ -255,6 +277,19 @@ const char* nameStringForKPDVE(int kpdve)
 const char* nameStringAtIndex(int index)
 {
     return noteStrings[index];
+}
+
+// FIXME: This function is completely redundant, but might be further implemented (for array access safety, especially)
+/**
+ * @brief Returns the name of a note at a given index.
+ *
+ * @param index The index in the note array.
+ * @return double The note name.
+ */
+double noteRatioAtIndex(int index)
+{
+    double result = noteRatios[index];
+    return result;
 }
 
 /**
