@@ -35,6 +35,8 @@ int largest_bit(int aUInt)
         counter++;
         v >>= 1;
     }
+    // The largest bit position is 0-indexed, so we subtract 1.
+    // If the input is zero, we return -1.
     return counter - 1;
 }
 
@@ -43,7 +45,10 @@ int largest_bit(int aUInt)
  *
  * It interleaves the lower and upper bits of the input value by breadth.
  * 
- * The shuffling allows for the ordered discovery of a minimal value.
+ * The shuffling allows for the ordered discovery of a minimal value. 
+ * 
+ * The 'shuffling' is equivalent to a deck of cards cleanly shuffled.
+ * #FIXME: THIS NEEDS FURTHER CLARIFICATION. ESPECIALLY IF THE SYSTEM SHOULD BE EXTENDED TO ALL POSSIBLE TWIN PRIMES
  *
  * @param ve_val The value to shuffle.
  * @param breadth The breadth to use for shuffling.
@@ -79,6 +84,7 @@ int unshuffle_bits(int ve_val, int breadth)
  * @brief Creates a ve_value struct from the given input value.
  *
  * It calculates the binary value, v, and e (largest bit position) for the struct.
+ * allows for the discovery of root position by finding the least possible value (closest regular ordering)
  *
  * @param input_val The input value to convert.
  * @return The constructed ve_value struct.
