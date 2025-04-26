@@ -49,27 +49,32 @@ int largest_bit(int aUInt)
  * 
  * The 'shuffling' is equivalent to a deck of cards cleanly shuffled.
  * #FIXME: THIS NEEDS FURTHER CLARIFICATION. ESPECIALLY IF THE SYSTEM SHOULD BE EXTENDED TO ALL POSSIBLE TWIN PRIMES
- * in principle, the breadth should be an even number, to allow for a clean shuffle. It is quite possible that it always needs to be a power of 2, or a power of a prime.
+ * in principle, the breadth should be an even number, to allow for a clean shuffle. It is quite possible that it might best be be a power of 2 for future use.
  *
  * @param ve_val The value to shuffle.
- * @param breadth The breadth to use for shuffling. (not yet implemented) -- breadh has to be an even number  In this scheme, it is always 8.
+ * @param breadth The breadth to use for shuffling. In this scheme, it is always 8.
  * 
  * start:             [7,6,5,4,3,2,1,0]
  * After 1st shuffle: [7,3,6,2,5,1,4,0]
  * After 2nd shuffle: [7,5,3,1,6,4,2,0]
  * After 3rd shuffle: [7,6,5,4,3,2,1,0]
  * 
- * 7 is irrelevant, but keeps the split even.
+ * 7 is always zero, but keeps the split even.
  * 
- * @note The breadth parameter is not currently used in the implementation.
+ * @note The breadth parameter splits the bits like a deck of cards, and is made to be an even number.
  * @note The function assumes that the input value is a 7-bit integer, fit into an 8-bit byte
  * @return The shuffled value.
  */
 int shuffle_bits(int ve_val, int breadth)
 {
     int result = 0;
-    // do it the obvious way...
-    for (int i = 0; i < 4; i++)
+    
+    // The breadth should be an even number for a clean shuffle.
+    int shifts = ((breadth & 1) ? breadth : breadth + 1) / 2; // if breadth is odd, make it even to splity clean in half with an extra bit.
+
+    // root is always first; last bit is always last.
+
+    for (int i = 0; i < shifts; i++)
     {
         result |= (ve_val & 1 << i) << i;
         result |= (ve_val & 128 >> i) >> i;
