@@ -50,6 +50,8 @@
 void printAnalysisSummary(harmony_state *state)
 {
         // Print the binary representation of the encoded state in 32 bits, with colored formatting.
+        printf(kpdve_as_string(state->kpdve));
+        printf(" ");
         print_colored_binary(state->encoded_state, 32);
         printf(" ");
 
@@ -71,13 +73,13 @@ void printAnalysisSummary(harmony_state *state)
 
         char chordNotes[30];
         chordNotesStringForKPDVE(state->kpdve, chordNotes, sizeof(chordNotes));
-        printf("%25s", chordNotes);
-        printf("> %18s ", scaleNameForKPDVE(state->kpdve));
         printf("%3s", conventionalTonicStringForKPDVE(state->kpdve));
-        printf("%14s ", modeNameForKPDVE(state->kpdve));
+        printf("%18s ", scaleNameForKPDVE(state->kpdve));
         printf("%3s",  patternDistortionForKPDVE(state->kpdve));
-        printf("%3s", rootStringForKPDVE(state->kpdve));
-        printf("%5s ", conventionalDegreeStringForKPDVE(state->kpdve));
+        printf("%14s ", modeNameForKPDVE(state->kpdve));
+        printf("%4s ", conventionalDegreeStringForKPDVE(state->kpdve));
+        printf("%3s ", rootStringForKPDVE(state->kpdve));
+        printf("%25s", chordNotes);
         printf("%3d poss.", state->kpdve_list_length);
 
 }
@@ -183,7 +185,7 @@ void scrollBinaryValues()
     int context = 35;
     harmony_state default_state = harmony_state_default();
 
-    for (int i = 0; i < 0b111111100000; i++)
+    for (int i = 0; i < 0b1111111; i++)
     {
         adjust_harmony_state_from_chroma_and_context(&default_state, i, context);
         if (default_state.kpdve_list_length == 0)
@@ -244,7 +246,7 @@ void scrollKPDEvalues()
 void testShuffleBits(int testVal)
 {
     int ve_val = testVal;
-    int breadth = 7;
+    int breadth = 8;
     int shuffled = shuffle_bits(ve_val, breadth);
     printf("Original: ");
     print_colored_binary(ve_val, breadth);
@@ -330,19 +332,20 @@ void continuous_binary_test()
 int main()
 {
     // Call the harmony_state_default function
-    majorTriadSequenceModulatingUp();
+   //  majorTriadSequenceModulatingUp();
     //majorTriadSequenceModulatingUpFifths();
     //majorTriadSequenceModulatingDown();
     // testShuffleBits(0b1001001);
     // testShuffleBits(0b1000100);
     // testShuffleBits(0b1000001);
     // testShuffleBits(0b1000000);
+ 
     scrollBinaryValues();
-    scrollKPDEvalues();
+    // scrollKPDEvalues();
     // continuous_binary_test();
-    majorTriadSequenceModulatingDownFifths();
-    majorTriadSequenceModulatingDown();
-    majorTriadSequenceModulatingUpFifths();
-    majorTriadSequenceModulatingUp();
+    // majorTriadSequenceModulatingDownFifths();
+    // majorTriadSequenceModulatingDown();
+    // majorTriadSequenceModulatingUpFifths();
+    // majorTriadSequenceModulatingUp();
     return 0;
 }

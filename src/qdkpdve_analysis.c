@@ -49,10 +49,18 @@ int largest_bit(int aUInt)
  * 
  * The 'shuffling' is equivalent to a deck of cards cleanly shuffled.
  * #FIXME: THIS NEEDS FURTHER CLARIFICATION. ESPECIALLY IF THE SYSTEM SHOULD BE EXTENDED TO ALL POSSIBLE TWIN PRIMES
- * in principle, the breadth should be an even number, to allow for a clean shuffle.
+ * in principle, the breadth should be an even number, to allow for a clean shuffle. It is quite possible that it always needs to be a power of 2, or a power of a prime.
  *
  * @param ve_val The value to shuffle.
- * @param breadth The breadth to use for shuffling. (not yet implemented)
+ * @param breadth The breadth to use for shuffling. (not yet implemented) -- breadh has to be an even number  In this scheme, it is always 8.
+ * 
+ * start:             [7,6,5,4,3,2,1,0]
+ * After 1st shuffle: [7,3,6,2,5,1,4,0]
+ * After 2nd shuffle: [7,5,3,1,6,4,2,0]
+ * After 3rd shuffle: [7,6,5,4,3,2,1,0]
+ * 
+ * 7 is irrelevant, but keeps the split even.
+ * 
  * @note The breadth parameter is not currently used in the implementation.
  * @note The function assumes that the input value is a 7-bit integer, fit into an 8-bit byte
  * @return The shuffled value.
@@ -162,10 +170,10 @@ struct ve_value minimize_ve_value(struct ve_value ve_val)
         {
             min_ve.bin_val = test_val;
             // make the v value the next power of two
-            min_ve.v = 1 << i;
-            min_ve.e = largest_bit(test_val);
+            min_ve.v = 1 << i; // can be 1 (fifths), 2 (scale up), or 4 (thirds)
+            min_ve.e = largest_bit(test_val); // how far the value must reach to contain all bits
         }
-        // 
+        // unshuffling the bits yields scale from fifths, thirds from scale, and fifths from thirds
         test_val = unshuffle_bits(test_val, 8);
     }
     return min_ve;
