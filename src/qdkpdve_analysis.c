@@ -49,9 +49,12 @@ int largest_bit(int aUInt)
  * 
  * The 'shuffling' is equivalent to a deck of cards cleanly shuffled.
  * #FIXME: THIS NEEDS FURTHER CLARIFICATION. ESPECIALLY IF THE SYSTEM SHOULD BE EXTENDED TO ALL POSSIBLE TWIN PRIMES
+ * in principle, the breadth should be an even number, to allow for a clean shuffle.
  *
  * @param ve_val The value to shuffle.
- * @param breadth The breadth to use for shuffling.
+ * @param breadth The breadth to use for shuffling. (not yet implemented)
+ * @note The breadth parameter is not currently used in the implementation.
+ * @note The function assumes that the input value is a 7-bit integer, fit into an 8-bit byte
  * @return The shuffled value.
  */
 int shuffle_bits(int ve_val, int breadth)
@@ -150,15 +153,19 @@ struct ve_value minimize_ve_value(struct ve_value ve_val)
 {
     struct ve_value min_ve = ve_val;
     
+    // extract the binary value from ve_val
     int test_val = ve_val.bin_val;
     for (int i = 0; i < 3; i++)
     {
+        // if the test value is less than the current minimum, update the minimum
         if (ve_val.bin_val >= test_val)
         {
             min_ve.bin_val = test_val;
+            // make the v value the next power of two
             min_ve.v = 1 << i;
             min_ve.e = largest_bit(test_val);
         }
+        // 
         test_val = unshuffle_bits(test_val, 8);
     }
     return min_ve;

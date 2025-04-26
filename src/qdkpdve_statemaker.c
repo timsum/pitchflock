@@ -87,21 +87,27 @@ void set_kp_list(harmony_state *a_state)
             kpdve_temp[0] = k;
             kpdve_temp[1] = p;
 
-            // undo the KP
+            // undo the KP -- this yields a 7-bit combination of notes. The lydian base is moved to zero position, 
+            // and pattern distortion is removed.
             dve_input = undo_kp_for_input_val(circle_notes, k, p);
 
             // now is ready for lowest dve
             test_dve = make_dve(dve_input);
 
+            // run the dve through the minimizer to find its most efficient kpdve representation
+            // #fixme: this needs more thorough documentation, so that the algorithm is clear.
+            // in principle, it is the minimum shuffle. But I am using only fifths and thirds. 
+            // -- AND the shuffling should be more thoroughly traced.
             test_dve = minimize_dve_value(test_dve);
 
+            // extract the kpdve values from the minimized dve
             kpdve_temp[2] = test_dve.d;
             kpdve_temp[3] = test_dve.ve_val.v;
             kpdve_temp[4] = test_dve.ve_val.e;
 
+            // record the most efficient values for the kp match
             a_state->dve_list[match_count] = test_dve.bin_val;
             a_state->ve_list[match_count] = test_dve.ve_val.bin_val;
-
             a_state->kpdve_list[match_count] = KPDVEtoBinaryEncoding(kpdve_temp);
 
             match_count++;

@@ -35,10 +35,13 @@ struct kpdve_value
      struct dve_value dve_val;
  };
 
+ // a utility function to find the efficiencency of a ve_value
 int largest_bit(int aUInt);
-// hmmm. the 'breadth is unused...
+
+// shuffles bits like a deck of cards
 int shuffle_bits(int ve_val, int breadth);
-// DOES THIS WORK? SHOULD IF BREADTH = 7 // COULD BE USEFUL FOR NEGATIVE V VALUES...
+
+// unshuffles bits by shuffling them further... :)
 int unshuffle_bits(int ve_val, int breadth);
 
 // manufacture VE and DVE structs

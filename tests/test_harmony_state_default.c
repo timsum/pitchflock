@@ -241,6 +241,41 @@ void scrollKPDEvalues()
     }
 }
 
+void testShuffleBits(int testVal)
+{
+    int ve_val = testVal;
+    int breadth = 7;
+    int shuffled = shuffle_bits(ve_val, breadth);
+    printf("Original: ");
+    print_colored_binary(ve_val, breadth);
+    printf("\nShuffled: ");
+    print_colored_binary(shuffled, breadth);
+    printf("\nUnshuffled: ");
+    print_colored_binary(unshuffle_bits(shuffled, breadth), breadth);
+    printf("\n");
+}
+
+void testMinimizeDVE(int testVal)
+{
+    struct dve_value dve_val = make_dve(testVal);
+    dve_val = minimize_dve_value(dve_val);
+    printf("Original: ");
+    print_colored_binary(testVal, 7);
+    printf("\nMinimized: ");
+    print_colored_binary(dve_val.bin_val, 7);
+    printf("\n");
+}
+
+void testMinimizeVE(int testVal)
+{
+    struct ve_value ve_val = make_ve(testVal);
+    struct ve_value min_ve = minimize_ve_value(ve_val);
+    printf("Original: ");
+    print_colored_binary(ve_val.bin_val, 7);
+    printf("\nMinimized: ");
+    print_colored_binary(min_ve.bin_val, 7);
+    printf("\n");
+}
 /**
  * @brief Continuously generates random binary values and analyzes their harmony state.
  *
@@ -295,12 +330,16 @@ void continuous_binary_test()
 int main()
 {
     // Call the harmony_state_default function
-    //majorTriadSequenceModulatingUp();
+    majorTriadSequenceModulatingUp();
     //majorTriadSequenceModulatingUpFifths();
     //majorTriadSequenceModulatingDown();
+    // testShuffleBits(0b1001001);
+    // testShuffleBits(0b1000100);
+    // testShuffleBits(0b1000001);
+    // testShuffleBits(0b1000000);
     scrollBinaryValues();
     scrollKPDEvalues();
-    continuous_binary_test();
+    // continuous_binary_test();
     majorTriadSequenceModulatingDownFifths();
     majorTriadSequenceModulatingDown();
     majorTriadSequenceModulatingUpFifths();
