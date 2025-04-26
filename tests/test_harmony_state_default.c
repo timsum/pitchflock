@@ -185,7 +185,7 @@ void scrollBinaryValues()
     int context = 35;
     harmony_state default_state = harmony_state_default();
 
-    for (int i = 0; i < 0b1111111; i++)
+    for (int i = 0; i < 0b11111110000; i++)
     {
         adjust_harmony_state_from_chroma_and_context(&default_state, i, context);
         if (default_state.kpdve_list_length == 0)
@@ -207,6 +207,12 @@ void scrollBinaryValues()
  *
  * This function iterates through all possible KPDVE values, generates the corresponding
  * harmony state, and prints the analysis summary for each state.
+ * 
+ * @note in the end, the v value need only be 1, 2, or 4, so the loop need only be up to 2 and use powers of two as the v value.  6,5, and 3 yield inversions of the same chord.
+ * a great deal would have to be changed to make this work, but it is more efficient. and nice that V is never zero.
+ * Moreover, it nicely DOESN'T fit the 7-bit pattern, so it is expresses the tension of the prime division. Every 3rd note actually every -4th note; every 5th note is a -2nd note. Every 6th note is a -1st note.
+ * -- however, it may also be useful for 'negative harmony' -- implemented in C#. Perhaps importable.
+ * 
  */
 void scrollKPDEvalues()
 {
@@ -299,7 +305,7 @@ void continuous_binary_test()
     int bits_set = 0;
     int chordMax = 3;
 
-    while (totalStates < 2000) // or Infinite loop for continuous testing
+    while (true) // or Infinite loop for continuous testing
     {
         // Generate a random 12-bit number with up to 5 bits set to 1
         random_number = 0;
@@ -332,20 +338,18 @@ void continuous_binary_test()
 int main()
 {
     // Call the harmony_state_default function
-   //  majorTriadSequenceModulatingUp();
-    //majorTriadSequenceModulatingUpFifths();
-    //majorTriadSequenceModulatingDown();
+
     // testShuffleBits(0b1001001);
     // testShuffleBits(0b1000100);
     // testShuffleBits(0b1000001);
     // testShuffleBits(0b1000000);
  
     scrollBinaryValues();
-    // scrollKPDEvalues();
+    scrollKPDEvalues();
     // continuous_binary_test();
-    // majorTriadSequenceModulatingDownFifths();
-    // majorTriadSequenceModulatingDown();
-    // majorTriadSequenceModulatingUpFifths();
-    // majorTriadSequenceModulatingUp();
+    majorTriadSequenceModulatingDownFifths();
+    majorTriadSequenceModulatingDown();
+    majorTriadSequenceModulatingUpFifths();
+    majorTriadSequenceModulatingUp();
     return 0;
 }
