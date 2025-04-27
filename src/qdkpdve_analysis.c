@@ -48,10 +48,12 @@ int largest_bit(int aUInt)
  * The shuffling allows for the ordered discovery of a minimal value. 
  * 
  * The 'shuffling' is equivalent to a deck of cards cleanly shuffled.
- * #FIXME: THIS NEEDS FURTHER CLARIFICATION. ESPECIALLY IF THE SYSTEM SHOULD BE EXTENDED TO ALL POSSIBLE TWIN PRIMES
+ * #FIXME: THIS NEEDS FURTHER CLARIFICATION. ESPECIALLY IF THE SYSTEM SHOULD BE EXTENDED TO MORE TWIN PRIMES
  * in principle, the breadth should be an even number, to allow for a clean shuffle. It is quite possible that it might best be be a power of 2 for future use.
+ * Powers of two have the smallest number of shuffles to return -- the number of shuffles in that case seems to be equal to the power of 2.
+ * other even numbers have a different number of shuffles (always larger?) based on prime factors of n-1.
  *
- * @param ve_val The value to shuffle.
+ * @param ve_val The value to shuffle (a so-called out-shuffle).
  * @param breadth The breadth to use for shuffling. In this scheme, it is always 8.
  * 
  * start:             [7,6,5,4,3,2,1,0]
@@ -61,8 +63,9 @@ int largest_bit(int aUInt)
  * 
  * 7 is always zero, but keeps the split even.
  * 
- * @note The breadth parameter splits the bits like a deck of cards, and is made to be an even number.
- * @note The function assumes that the input value is a 7-bit integer, fit into an 8-bit byte
+ * @note The breadth parameter splits the bits like a deck of cards, and is made to be an even number if it comes in as an odd number.
+ * @note The function is used with an input value is a 7-bit integer, fit into an 8-bit byte
+ * 
  * @return The shuffled value.
  */
 int shuffle_bits(int ve_val, int breadth)
@@ -86,6 +89,11 @@ int shuffle_bits(int ve_val, int breadth)
  * @brief Reverses the bit shuffling performed by shuffle_bits.
  *
  * It applies the shuffle_bits function twice to achieve the unshuffling.
+ * this function assumes that the breadth is 8. 
+ * #FIXME For this to be a proper unshuffle, it would have to adjust number of function calls based on the breadth. To start with, it would have to be the power of 2 which
+ * corresponds to the breadth (right now, it is 2^3 = 8). And the number of shuffles whould have to that power minus 1...
+ * 
+ * @note This is the reciprocal of the shuffle_bits function because a cycle of 3 shuffles returns the original value. To do two shuffles is to move in the other direction.
  *
  * @param ve_val The value to unshuffle.
  * @param breadth The breadth to use for unshuffling.
@@ -178,7 +186,7 @@ struct ve_value minimize_ve_value(struct ve_value ve_val)
             min_ve.v = 1 << i; // can be 1 (fifths), 2 (scale up), or 4 (thirds)
             min_ve.e = largest_bit(test_val); // how far the value must reach to contain all bits
         }
-        // unshuffling the bits yields scale from fifths, thirds from scale, and fifths from thirds
+        // unshuffling the bits yields scale from fifths, thirds from scale, and fifths from thirds // shuffle_bits would put the 
         test_val = unshuffle_bits(test_val, 8);
     }
     return min_ve;
